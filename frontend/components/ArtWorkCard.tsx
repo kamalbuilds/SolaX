@@ -1,6 +1,7 @@
 import { Avatar, Box, BoxProps, Flex, Image, Text } from '@chakra-ui/react'
-import { isSft, Listing, LoadMetadataOutput } from '@metaplex-foundation/js'
-import React from 'react'
+import { isSft, Listing, LoadMetadataOutput , lamports } from '@metaplex-foundation/js'
+import React, { useContext} from 'react';
+import SolPriceContext from '../context/SolPriceContext';
 
 import formatPrice from '../utils/formatPrices'
 
@@ -19,6 +20,11 @@ const ArtworkCard: React.FC<Props> = ({
   const imageSrc = artwork.json?.image
   const tokenType = isSft(artwork) ? 'SFT' : 'NFT'
 
+  const { price: solPrice } = useContext(SolPriceContext);
+  console.log(solPrice,"solPrice")
+  let priceInSol = formatPrice(listing);
+  let priceInUsd = priceInSol.split(' ')[1] * solPrice;
+  console.log(priceInSol,priceInUsd,priceInSol.split(' ')[1],"priceInSol,priceInUsd")
   return (
     <Box
       layerStyle="base"
@@ -103,6 +109,20 @@ const ArtworkCard: React.FC<Props> = ({
           color="white"
         >
           {formatPrice(listing)}
+        </Text>
+      )}
+
+    {listing && (
+        <Text
+          mt={4}
+          fontSize="2xl"
+          fontWeight="bold"
+          textTransform="capitalize"
+          textAlign="start"
+          padding="2px 10px 10px 5px"
+          color="white"
+        >
+          {`${priceInUsd.toFixed(2)} USD`}
         </Text>
       )}
     </Box>

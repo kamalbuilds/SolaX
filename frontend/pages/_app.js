@@ -12,6 +12,7 @@ import { MetaplexProvider } from "../context/Metaplex";
 import { AuctionHouseProvider } from "../context/AuctionHouse";
 import Sidebar from "../components/sidebar";
 import { ChakraProvider, theme } from "@chakra-ui/react";
+import  SolPriceProvider  from "../context/SolPriceProvider.tsx";
 
 function MyApp({ Component, pageProps }) {
   const [queryClient] = useState(() => new QueryClient());
@@ -29,14 +30,16 @@ function MyApp({ Component, pageProps }) {
             <WalletConnectionProvider>
               <MetaplexProvider>
                 <AuctionHouseProvider>
-                  <>
-                    <div className="flex min-h-screen ">
-                      <Sidebar />
-                      <main className="flex flex-1 flex-col">
-                        <Component {...pageProps} />
-                      </main>
-                    </div>
-                  </>
+                  <SolPriceProvider>
+                    <>
+                      <div className="flex min-h-screen ">
+                        <Sidebar />
+                        <main className="flex flex-1 flex-col">
+                          <Component {...pageProps} />
+                        </main>
+                      </div>
+                    </>
+                  </SolPriceProvider>
                 </AuctionHouseProvider>
               </MetaplexProvider>
             </WalletConnectionProvider>
