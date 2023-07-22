@@ -76,7 +76,6 @@ const MarketplacePage = () => {
   
   const { metaplex } = useMetaplex();
   const wallet = useWallet();
-  console.log("loop show ",wallet);
 
   const handleCreateSFT = useCallback(async (values, uri) => {
     if (  !metaplex || !image || !wallet || !wallet.publicKey) {
@@ -85,6 +84,7 @@ const MarketplacePage = () => {
 
     console.log(metadataURI,"metadataURI")
     let title = ''
+    let description = ''
     if (tokenAmount && tokenAmount > 1) {
       await metaplex.nfts().createSft({
         uri,
@@ -94,7 +94,13 @@ const MarketplacePage = () => {
         tokenAmount: token(tokenAmount),
       })
 
-      title = 'SFT created.'
+      toast({
+        title: 'SFT created 🎉',
+        description: "We've created your SFT. 🚀",
+        status: 'success',
+        duration: 9000,
+        isClosable: true,
+      })
     } else {
       await metaplex.nfts().create({
         uri,
@@ -103,17 +109,16 @@ const MarketplacePage = () => {
         tokenOwner: wallet.publicKey,
       })
 
-      title = 'NFT created 🎉'
+      toast({
+        title: 'NFT created 🎉',
+        description: "We've created your NFT. 🚀",
+        status: 'success',
+        duration: 9000,
+        isClosable: true,
+      })
     }
 
-    toast({
-      title,
-      description: "We've created your SFT. 🚀",
-      status: 'success',
-      duration: 9000,
-      isClosable: true,
-    })
-    router.push('/')
+    router.push('/dashboard')
   }, [wallet, router, metaplex, auctionHouse, toast, image, tokenAmount , metadataURI])
 
   const handleTokenAmountChange = useCallback(

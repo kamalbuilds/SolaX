@@ -5,7 +5,7 @@ import { useWallet } from "@solana/wallet-adapter-react";
 import dynamic from "next/dynamic";
 import { Connection, PublicKey } from "@solana/web3.js";
 import { Elusiv, PrivateTxWrapper, SEED_MESSAGE } from "@elusiv/sdk";
-import { Button } from "../components/ui/button";
+import { Button} from "@chakra-ui/react";
 import { useToast } from "../components/ui/use-toast";
 import { getAccount, getAssociatedTokenAddress } from "@solana/spl-token";
 import Image from "next/image";
@@ -16,6 +16,7 @@ import { Skeleton } from "../components/ui/skeleton";
 import { motion, useAnimation } from "framer-motion";
 import React, { PureComponent } from "react";
 import { Overview } from "../components/ui/overview";
+import { LAMPORTS_PER_SOL } from '@solana/web3.js';
 import {
   Card,
   CardContent,
@@ -25,17 +26,7 @@ import {
   CardTitle,
 } from "../components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "../components/ui/alert-dialog";
+
 import { Label } from "../components/ui/label";
 import {
   Select,
@@ -128,12 +119,15 @@ const useBalanceState = () => {
   const [userPrivateTokenBalance, setUserPrivateTokenBalance] = useState<
     string | null
   >(null);
+  const [userSOLBalance, setUserSOLBalance] = useState<string | null>(null);
 
   return {
     userTokenBalance,
     setUserTokenBalance,
     userPrivateTokenBalance,
+    userSOLBalance,
     setUserPrivateTokenBalance,
+    setUserSOLBalance,
   };
 };
 
@@ -150,8 +144,10 @@ export default function Home() {
   const {
     userTokenBalance,
     setUserTokenBalance,
+    userSOLBalance,
     userPrivateTokenBalance,
     setUserPrivateTokenBalance,
+    setUserSOLBalance,
   } = useBalanceState();
 
   const { toast } = useToast();
@@ -261,6 +257,7 @@ export default function Home() {
     }
   }, [loading, controls]);
 
+
   useEffect(() => {
     const fetchUserTokenBalance = async () => {
       setLoading(true);
@@ -269,7 +266,7 @@ export default function Home() {
           "https://api.devnet.solana.com/"
         );
         const usdcMint = new PublicKey(
-          "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU"
+          "F3hocsFVHrdTBG2yEHwnJHAJo4rZfnSwPg8d5nVMNKYE"
           // "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
         );
         if (wallet.publicKey) {
@@ -324,6 +321,11 @@ export default function Home() {
       try {
         if (!elusivInstance || !wallet.connected || !isSignedIn) return;
         // Inside your fetchTransactions function
+        let privateSOLBalance = await elusivInstance.getLatestPrivateBalance(
+          "LAMPORTS"
+        );
+        setUserSOLBalance(privateSOLBalance?.toString());
+        console.log("privateBalance", privateBalance,privateSOLBalance?.toString());
         let privateBalance = await elusivInstance.getLatestPrivateBalance(
           "USDC"
         );
@@ -448,6 +450,56 @@ export default function Home() {
     fetchData();
   }, [elusivInstance, refreshKey]);
 
+  const handleTopUpSOL = async () => {
+    setLoading(true);
+    toast({
+      title: "TopUp Initiated!",
+      description:
+        "Please approve the transaction to TopUp your Elusiv Private Balance.",
+    });
+    if (!elusivInstance || !wallet.signTransaction) return;
+
+    try {
+      const connection = new Connection("https://api.devnet.solana.com/");
+
+      // Convert amount from Sol to Lamports (1 Sol = 1e9 Lamports)
+      const amountInDecimals = parseFloat(topupAmount) * 10 ** 9;
+      console.log("Amount in decimals:", amountInDecimals);
+      const topupTx = await elusivInstance.buildTopUpTx ( amountInDecimals , "LAMPORTS" )
+
+      const signedTransaction = await wallet.signTransaction(topupTx.tx);
+
+      signedTransaction.lastValidBlockHeight = (
+        await connection.getLatestBlockhash()
+      ).lastValidBlockHeight;
+      topupTx.tx = signedTransaction;
+      console.log("Signed Transaction:", signedTransaction);
+
+      const res = await elusivInstance.sendElusivTxWithTracking(topupTx);
+      await connection.confirmTransaction(
+        {
+          signature: res.elusivTxSig.signature,
+          lastValidBlockHeight: topupTx.tx.lastValidBlockHeight!,
+          blockhash: topupTx.tx.recentBlockhash!,
+        },
+        "confirmed"
+      );
+      toast({
+        title: "Successful Top-Up",
+        description: "User has sucessfully topped up Elusiv private balance.",
+      });
+    } catch (error) {
+      console.log("Sign Message Error:", error);
+      toast({
+        title: "Top-Up Error",
+        description:
+          "There was an error topping-up your Elusiv Private Balance",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const handleTopUp = async () => {
     setLoading(true);
     toast({
@@ -458,12 +510,11 @@ export default function Home() {
     if (!elusivInstance || !wallet.signTransaction) return;
 
     try {
-      const connection = new Connection(
-        "https://api.devnet.solana.com/"
-      );
+      const connection = new Connection("https://api.devnet.solana.com/");
 
       // Convert amount from Sol to Lamports (1 Sol = 1e9 Lamports)
       const amountInDecimals = parseFloat(topupAmount) * 10 ** 6;
+      console.log("Amount in decimals:", amountInDecimals);
       const topupTx = await elusivInstance.buildTopUpTx(
         amountInDecimals,
         "USDC"
@@ -744,7 +795,7 @@ export default function Home() {
 
         const data = await res.json();
 
-        console.log(data); // Add this line to debug the response data
+        console.log(data,"data got from api/3"); // Add this line to debug the response data
 
         if (data.data.walletAddress) {
           setValidityStatus(true);
@@ -995,10 +1046,16 @@ export default function Home() {
                     wallet.connected &&
                     isSignedIn &&
                     userPrivateTokenBalance !== null && (
+                      <>
                       <CardDescription>
                         Your USDC private balance is:{" "}
                         {(Number(userPrivateTokenBalance) / 1e6).toFixed(2)}
                       </CardDescription>
+                      <CardDescription>
+                          Your SOL private balance is:{" "}
+                        {(Number(userSOLBalance) / 1e9).toFixed(2)}
+                      </CardDescription>
+                    </>
                     )
                   )}
                 </CardHeader>
@@ -1018,6 +1075,10 @@ export default function Home() {
                             <span className="ml-2">USDC</span>
                           </div>
                         </SelectValue>
+                      </SelectTrigger>
+                    </Select>
+                    <Select>
+                      <SelectTrigger>
                         <SelectValue>
                           <div className="flex flex-row-2">
                             <Image
@@ -1087,10 +1148,16 @@ export default function Home() {
                     wallet.connected &&
                     isSignedIn &&
                     userPrivateTokenBalance !== null && (
+                      <>
                       <CardDescription>
                         Your USDC private balance is:{" "}
                         {(Number(userPrivateTokenBalance) / 1e6).toFixed(2)}
                       </CardDescription>
+                      <CardDescription>
+                      Your SOL private balance is:{" "}
+                    {(Number(userSOLBalance) / 1e9).toFixed(2)}
+                  </CardDescription>
+                  </>
                     )
                   )}
                 </CardHeader>

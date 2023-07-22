@@ -6,8 +6,6 @@ import { useWallet } from '@solana/wallet-adapter-react';
 export const ShowNFTs = ({ onClusterChange }) => {
   const { metaplex } = useMetaplex();
   const wallet = useWallet();
-  console.log("loop show ",wallet);
-
   const [nft, setNft] = useState(null);
 
   const onClick = async () => {

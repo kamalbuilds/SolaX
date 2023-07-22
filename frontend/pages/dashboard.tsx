@@ -90,7 +90,7 @@ const Home: NextPage = () => {
                 }
                 disabled={!auctionHouseAddress}
               >
-                Connect Auction House
+                Connect your Store
               </Button>
               <Button
                 colorScheme="purple"
