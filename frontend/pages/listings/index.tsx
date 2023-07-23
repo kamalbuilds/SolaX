@@ -22,9 +22,9 @@ import { useMetaplex } from '../../context/Metaplex'
 import { createNonce } from '../../components/nonce/createnonce';
 import { getNonce } from '../../components/nonce/getnonce';
 import useListings from '../../hooks/useListings'
-import { set } from 'date-fns'
+import { set } from 'date-fns';
 
-const Listings: NextPage = () => {
+  const Listings: NextPage = () => {
   const wallet = useWallet()
   const toast = useToast()
   const router = useRouter()
@@ -42,8 +42,16 @@ const Listings: NextPage = () => {
 
   const createNonceAccount = async () => {
     const result = await createNonce();
+    const toast = useToast();
     // result.nonceAccount contains the public key of the nonce account
-    // result.txhash contains the transaction hash
+    // result.txhash contains the transaction hash\
+    toast({
+      title: "Nonce Account Created",
+      description: result.nonceAccount,
+      status: "success",
+      duration: 9000,
+      isClosable: true,
+    });
     console.log(`Nonce account: ${result.nonceAccount}`);
     console.log(`Transaction hash: ${result.txhash}`);
     setNoncePublicKey(result.nonceAccount);

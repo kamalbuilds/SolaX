@@ -74,7 +74,7 @@ const ArtworkCard: React.FC<Props> = ({
             <Avatar
               size="2xs"
               borderRadius="2px"
-              src="https://bit.ly/kent-c-dodds"
+              src="https://avatars.githubusercontent.com/u/95926324?v=4"
             />
           </Flex>
 

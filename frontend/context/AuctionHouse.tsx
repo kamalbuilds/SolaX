@@ -19,6 +19,7 @@ import {
 } from 'react'
 import { PublicKey } from '@solana/web3.js'
 import { useMetaplex } from './Metaplex'
+import { useToast } from '@chakra-ui/react';
 
 interface AuctionHouseState {
   auctionHouse?: Option<AuctionHouse>
@@ -84,7 +85,16 @@ export const AuctionHouseProvider: FC<PropsWithChildren> = ({ children }) => {
             address: ahAddress,
           })
 
-          setAuctionHouse(userAuctionHouse)
+          setAuctionHouse(userAuctionHouse);
+          const toast = useToast();
+          
+          toast({
+            title: "Auction House Address",
+            description: auctionHouse?.address.toBase58() || "No Auction House Address",
+            status: "success",
+            duration: 9000,
+            isClosable: true,
+          });
         } catch {
           // do nothing, user doesn't have AH
         }

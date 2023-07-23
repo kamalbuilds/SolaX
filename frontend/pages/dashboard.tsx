@@ -9,18 +9,21 @@ import Link from 'next/link'
 import React, { ChangeEvent, useCallback, useState } from 'react'
 import { PublicKey } from '@solana/web3.js'
 import styles from '../styles/Home.module.css'
+import { useToast } from '@chakra-ui/react';
 
 const Home: NextPage = () => {
   const [auctionHouseAddress, setAuctionHouse] = useState<PublicKey>()
-  const wallet = useWallet()
+  const wallet = useWallet();
+
   const {
     auctionHouse,
     loadUserAuctionHouse,
     loadAuctionHouse,
     handleCreateAuctionHouse,
     isPending,
-  } = useAuctionHouse()
-
+  } = useAuctionHouse();
+  const toast = useToast();
+  console.log(auctionHouse,"auctionHouse")
   const isWalletLoaded = wallet.publicKey && !isPending
   const shouldShowCreateBtn = isWalletLoaded && !auctionHouse
   const isAuctionHouseLoaded = isWalletLoaded && auctionHouse
@@ -28,7 +31,15 @@ const Home: NextPage = () => {
   const handleAuctionHouseChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
       e.preventDefault()
-      setAuctionHouse(new PublicKey(e.target.value))
+      setAuctionHouse(new PublicKey(e.target.value));
+
+      toast({
+        title: "Auction House Address",
+        description: auctionHouse?.address.toBase58() || "No Auction House Address",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+      });
     },
     []
   )
@@ -46,6 +57,7 @@ const Home: NextPage = () => {
         {isAuctionHouseLoaded && (
           <div className={styles.main}>
             <Flex flexDirection="column">
+              <h2>Marketplace Connected with Add {auctionHouse?.address.toBase58()}</h2>
               <Link href="/createListing">
                 <Button colorScheme="purple" width="100%" size="lg">
                   Create Listing
@@ -75,7 +87,7 @@ const Home: NextPage = () => {
             {!wallet.publicKey && <WalletMultiButton />}
             <Flex flexDirection="column">
               <Input
-                placeholder="Enter Auction House address"
+                placeholder="Enter your Store address"
                 mt={5}
                 value={
                   auctionHouseAddress ? auctionHouseAddress.toBase58() : ''
@@ -97,7 +109,7 @@ const Home: NextPage = () => {
                 size="lg"
                 onClick={loadUserAuctionHouse}
               >
-                Connect User`s Auction House
+                Connect to User Store
               </Button>
 
               {shouldShowCreateBtn && (
@@ -107,7 +119,7 @@ const Home: NextPage = () => {
                   width="100%"
                   onClick={handleCreateAuctionHouse}
                 >
-                  Create Auction House
+                  Create your Store
                 </Button>
               )}
             </Flex>
