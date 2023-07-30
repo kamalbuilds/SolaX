@@ -11,7 +11,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.0",
     "@hookform/resolvers": "^2.9.10",
-    "@huddle01/huddle01-iframe": "^0.0.8",
+    "@huddle01/iframe": "^0.0.7",
     "@solana/pay": "^0.2.4",
     "@solana/wallet-adapter-react": "^0.15.18",
     "@solana/wallet-adapter-react-ui": "^0.9.16",

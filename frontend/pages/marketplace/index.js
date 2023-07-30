@@ -2,14 +2,33 @@ import { useQuery } from "@tanstack/react-query";
 import Card from "../../components/Card";
 import Sidebar from "../../components/sidebar";
 import { supabase } from "../../lib/supabaseClient";
+import { useEffect } from "react";
 
 const MarketplacePage = () => {
   const { data, isLoading } = useQuery({
-    queryKey: "marketplace",
+    queryKey: ["marketplace"],
     queryFn: async () => {
-      return await supabase.from("marketplace").select("*").throwOnError();
+      return await supabase.from("marketplace").select().throwOnError();
     },
   });
+
+  useEffect(() => {
+    const fetchdata = async () => {
+      
+    let { data: marketplace, error: marketerror } = await supabase
+    .from('marketplace')
+    .select('id')
+      console.log(marketplace, "marketplace");
+      const { data, error } = await supabase.from("marketplace").select();
+      console.log(data, "data2");
+      if (error) {
+        console.log(error, "error");
+      }
+    }
+    fetchdata();
+
+    
+  }, [])
 
   return (
     <div className="flex min-h-screen ">
@@ -31,6 +50,8 @@ const MarketplacePage = () => {
                   price={item.price}
                   productName={item.product_name}
                   url={item.picture_url}
+                  category={item.category}
+                  room_id={item.room_id}
                 />
               ))}
             </div>

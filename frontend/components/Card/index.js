@@ -5,9 +5,9 @@ import  Router  from "next/router";
 // import { useCashApp } from ""../"
 /* eslint-disable @next/next/no-img-element */
 
-const Card = ({ url, productName, price, onClick }) => {
+const Card = ({ url, productName, price, category, onClick , room_id }) => {
+  console.log(room_id,"room_id")
   const { doTransaction } = useCashApp();
-
   // Reciever would be merchant's address
   const [receiver, setReceiver] = useState(
     "J34HqUvYCxALnbPrFRXxVXx1T8GSG8yuxf3vdkx7U8Mx"
@@ -27,6 +27,9 @@ const Card = ({ url, productName, price, onClick }) => {
           <h5 className="mb-2 text-xl font-medium text-gray-900">
             {productName}
           </h5>
+          <h5 className="mb-2 text-xl font-medium text-gray-900">
+            {category}
+          </h5>
           <p className="mb-4 text-base text-gray-700">{price} SOL</p>
           <Button onClick={onPay} className="w-full">
             Buy
@@ -34,7 +37,7 @@ const Card = ({ url, productName, price, onClick }) => {
           <Button
           variant="blue"
           onClick={() => {
-            Router.push("/connect")
+            Router.push(`/connect/${room_id}`);
           }} className="w-full ">
             Connect
           </Button>

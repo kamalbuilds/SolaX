@@ -1,12 +1,12 @@
 import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react'
 import { WalletModalProvider } from '@solana/wallet-adapter-react-ui'
-import { PhantomWalletAdapter } from '@solana/wallet-adapter-wallets'
+import { BackpackWalletAdapter, GlowWalletAdapter, PhantomWalletAdapter } from '@solana/wallet-adapter-wallets'
 import { useMemo } from 'react'
 
 const WalletConnectionProvider = ({ children }) => {
     const endpoint = useMemo(() => 'https://api.devnet.solana.com', [])
 
-    const wallets = useMemo(() => [new PhantomWalletAdapter()], [])
+    const wallets = useMemo(() => [new PhantomWalletAdapter(), new GlowWalletAdapter(), new BackpackWalletAdapter()], [])
 
     return (
         <ConnectionProvider endpoint={endpoint}>

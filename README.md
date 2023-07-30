@@ -4,6 +4,12 @@
 
 CryptoEase is an intuitive Peer-to-Peer (P2P) marketplace that simplifies the experience of buying and selling items using different cryptocurrencies. With a focus on privacy and cross-chain compatibility, CryptoEase is powered by the Elusiv protocol for ensuring transactional privacy and the Wormhole protocol for facilitating cross-chain transactions.
 
+Wormhole Bridging token Proof
+
+Bridging MATIC(Mumbai) -> WMATIC(SOLANA Devnet)
+
+https://mumbai.polygonscan.com/tx/0xf3a4c47a7fd37d25350d9cb3e2efc5fc1a38476b2b36488ed9cbf2ff2aba63ac
+
 ## 🌟 Features
 
 **One-Click Purchases**: Buy items with a single click, using different cryptocurrencies from different blockchains seamlessly and without the need to understand complex transaction processes.

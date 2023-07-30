@@ -7,14 +7,48 @@ import { supabase } from "../../../lib/supabaseClient";
 import { useRouter } from "next/router";
 const LoginValidation = z.object({
   product_name: z.string().min(1).max(255),
-  price: z.number().positive(),
+  price: z.number().min(0).max(999.999), 
+  // price: z.number().min(0).transform((val) => parseFloat(val.toFixed(3))), // Allow up to 3 decimal places
   category: z.string().min(1).max(255),
   picture_url: z.string().url({ message: "Upload Picture or try again" }),
 });
 
 const MarketplacePage = () => {
   const router = useRouter();
-  console.log(supabase,"s")
+
+  const createroom = async () => {
+    const url = 'https://api.huddle01.com/api/v1/create-iframe-room';
+    const apiKey = process.env.NEXT_PUBLIC_HUDDLE_API_KEY;
+    const body = JSON.stringify({
+      title: 'Huddle01-Test',
+      roomLocked: false
+    });
+    const headers = {
+      'Content-Type': 'application/json',
+      'x-api-key': apiKey,
+    };
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: headers,
+        body: body,
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to create room');
+      }
+  
+      const data = await response.json();
+      console.log(data.data.roomId, "response");
+      return data.data.roomId;
+    } catch (error) {
+      console.log(error);
+      // Handle the error appropriately
+      throw error;
+    }
+  };
+  
+
   return (
     <div className="flex min-h-screen  ">
       <Sidebar />
@@ -35,16 +69,19 @@ const MarketplacePage = () => {
                 picture_url: "",
               }}
               onSubmit={async (values) => {
+                console.log(values.product_name, "values");
+                const roomId = await createroom();
+
                 try {
                   const { error } = await supabase
                     .from("marketplace")
-                    .insert(values);
+                    .insert({price : values.price, product_name : values.product_name, category : values.category, picture_url : values.picture_url , room_id: roomId});
 
                   if (!error) {
                     router.push("/marketplace");
                   }
                 } catch (error) {
-                  console.log(error);
+                  console.log(error,"some error occured");
                   return {
                     [FORM_ERROR]:
                       errorMessage[error?.message] ??
