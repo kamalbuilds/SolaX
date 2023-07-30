@@ -21,9 +21,9 @@ const NavMenu = ({ connected, publicKey }) => {
         },
         {
             icon: IconVideo,
-            item: 'Huddle Connect',
+            item: 'Bridge Tokens',
             current: false,
-            action: () => Router.push('/connect')
+            action: () => Router.push('/bridge')
         },
         {
             icon: IconBuildingStore,

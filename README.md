@@ -4,6 +4,7 @@
 
 CryptoEase is an intuitive Peer-to-Peer (P2P) marketplace that simplifies the experience of buying and selling items using different cryptocurrencies. With a focus on privacy and cross-chain compatibility, CryptoEase is powered by the Elusiv protocol for ensuring transactional privacy and the Wormhole protocol for facilitating cross-chain transactions.
 
+
 Wormhole Bridging token Proof
 
 Bridging MATIC(Mumbai) -> WMATIC(SOLANA Devnet)
@@ -14,15 +15,17 @@ https://mumbai.polygonscan.com/tx/0xf3a4c47a7fd37d25350d9cb3e2efc5fc1a38476b2b36
 
 **One-Click Purchases**: Buy items with a single click, using different cryptocurrencies from different blockchains seamlessly and without the need to understand complex transaction processes.
 
-**No-Code Storefront Setup**: As a merchant, set up your own digital storefront easily with no coding knowledge required. Use our drag-and-drop interface, pre-made templates, and simple forms to input product information.
+**No-Code Storefront Setup**: As a merchant, set up your own digital storefront easily with no coding knowledge required. Get your project listed on marketplace page.
 
 **Privacy Protection**: Make purchases with confidence knowing that your personal information and transaction details are kept private, thanks to Elusiv protocol.
 
 **Interoperable Wallets**: No need to switch between different wallets to make transactions on different blockchains. Connect your existing wallets and let our platform handle cross-chain transactions via the Wormhole protocol.
 
-**Simplified Crypto Exchange**: Swap your cryptocurrencies into Sol tokens or other preferred cryptocurrencies easily with our integrated coin-exchange system.
+**Simplified Crypto Exchange**: Swap your cryptocurrencies into SOL tokens or other preferred cryptocurrencies easily with our integrated coin-exchange system.
 
-**Transparent Pricing**: See prices in your chosen cryptocurrency and view the value of your holdings across different blockchains all in one place.
+**Transparent Pricing**: See prices in your chosen cryptocurrency and view the value of your holdings across different blockchains all in one place. Thanks to Pyth Pricing Feeds.
+
+**Durable Nounces**: Sign now and pay later when the product is available or Purchase on your own timings.
 
 ## 🔧 Setup
 

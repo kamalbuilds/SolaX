@@ -8,6 +8,7 @@ import {
 import { AuthProvider } from '../AuthContext';
 import WalletConnectionProvider from "../context/WalletConnectionProvider";
 import { useState } from "react";
+import { MetaplexProvider } from "./MetaplexProvider";
 
 function MyApp({ Component, pageProps }) {
   const [queryClient] = useState(() => new QueryClient());
@@ -23,7 +24,9 @@ function MyApp({ Component, pageProps }) {
         <QueryClientProvider client={queryClient}>
           <Hydrate state={pageProps.dehydratedState}>
             <WalletConnectionProvider>
-              <Component {...pageProps} />
+              <MetaplexProvider>
+                <Component {...pageProps} />
+              </MetaplexProvider>
             </WalletConnectionProvider>
           </Hydrate>
         </QueryClientProvider>
