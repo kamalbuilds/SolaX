@@ -35,7 +35,7 @@ const NavMenu = ({ connected, publicKey }) => {
             icon: IconBuildingStore,
             item: 'MarketPlace',
             current: false,
-            action : ()=> Router.push('/marketplace')
+            action : ()=> Router.push('/listings')
         },
         {
             icon :  IconNewSection,
