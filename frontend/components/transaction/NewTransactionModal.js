@@ -41,11 +41,11 @@ const NewTransactionModal = ({ modalOpen, setModalOpen, addTransaction }) => {
 
         <div className="flex w-full flex-col space-y-2">
           <div className="flex rounded-lg border border-gray-200 p-4">
-            <label className="text-gray-300" htmlFor="receiver">
+            <label className="text-black" htmlFor="receiver">
               To:
             </label>
             <input
-              className="w-full pl-2 font-medium text-gray-600 placeholder-gray-300 outline-none"
+              className="w-full pl-2 font-medium text-black placeholder-slate-50 outline-none "
               id="receiver"
               name="receiver"
               type="text"
@@ -56,11 +56,11 @@ const NewTransactionModal = ({ modalOpen, setModalOpen, addTransaction }) => {
           </div>
 
           <div className="flex rounded-lg border border-gray-200 p-4">
-            <label className="text-gray-300" htmlFor="transactionPurpose">
+            <label className="text-black" htmlFor="transactionPurpose">
               For:
             </label>
             <input
-              className="w-full pl-2 font-medium text-gray-600 placeholder-gray-300 outline-none"
+              className="w-full pl-2 font-medium  text-black placeholder-slate-50  outline-none"
               id="transactionPurpose"
               name="transactionPurpose"
               type="text"

@@ -41,7 +41,7 @@ const NavMenu = ({ connected, publicKey }) => {
             icon :  IconNewSection,
             item : 'Add Products',
             current: false,
-            action : ()=> Router.push('/marketplace/new')
+            action : ()=> Router.push('/createnft')
         },
     ]
 

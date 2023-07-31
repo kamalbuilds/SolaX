@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-        <title>P2P SOL Marketplace</title>
+        <title>SOLAX</title>
       </Head>
 
       <AuthProvider>  
