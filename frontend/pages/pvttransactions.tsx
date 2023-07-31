@@ -838,10 +838,6 @@ export default function Home() {
 
   return (
     <div>
-      <Head>
-        <title>Monstrè Privacy Dispenser</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <main>
         <header className="sticky top-0 z-40 w-full border-b bg-background">
           <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
@@ -874,11 +870,11 @@ export default function Home() {
           <Tabs defaultValue="overview">
             <div className="flex justify-center">
               <TabsList className="mt-8">
-                <TabsTrigger value="overview">Dashboard</TabsTrigger>
-                <TabsTrigger value="topup">Deposit</TabsTrigger>
-                <TabsTrigger value="send">Send</TabsTrigger>
-                <TabsTrigger value="message">Message</TabsTrigger>
-                <TabsTrigger value="activity">Activity</TabsTrigger>
+                <TabsTrigger value="overview" className="text-blue-600">Dashboard</TabsTrigger>
+                <TabsTrigger value="topup"  className="text-green-600">Deposit</TabsTrigger>
+                <TabsTrigger value="send" className="text-blue-600">Send</TabsTrigger>
+                <TabsTrigger value="message" className="text-blue-600">Message</TabsTrigger>
+                <TabsTrigger value="activity" className="text-blue-600">Activity</TabsTrigger>
               </TabsList>
             </div>
             <TabsContent value="overview">
@@ -960,7 +956,7 @@ export default function Home() {
               <Card className="px-2 py-2 mb-8">
                 <CardHeader>
                   <div className="flex justify-between items-center">
-                    <CardTitle>Deposit</CardTitle>
+                    <CardTitle style={{color: 'blue'}}>Deposit</CardTitle>
                     <Button
                       className="flex items-center justify-center rounded-full h-8 w-8 p-1"
                       variant="secondary"
@@ -1427,8 +1423,8 @@ export default function Home() {
               <Image
                 src="/elusiv2.png"
                 alt="powered by Elusiv"
-                width={210}
-                height={210}
+                width={350}
+                height={50}
                 className="footer-image"
               />
             </Link>

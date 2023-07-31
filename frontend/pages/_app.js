@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }) {
       </Head>
 
       <AuthProvider>  
-        <ChakraProvider >
+        <ChakraProvider theme={theme}>
         <QueryClientProvider client={queryClient}>
           <Hydrate state={pageProps.dehydratedState}>
             <WalletConnectionProvider>
