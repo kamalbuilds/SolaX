@@ -1,6 +1,5 @@
 // @ts-nocheck
-import WormholeBridge, { Theme, OPACITY, WormholeConnectConfig } from '@wormhole-foundation/wormhole-connect';
-import Sidebar from "../components/sidebar"; 
+import WormholeBridge, { Theme, OPACITY, WormholeConnectConfig } from '@wormhole-foundation/wormhole-connect'; 
 
 const config= {
   env: "mainnet",
@@ -16,8 +15,6 @@ const Bridge = () => {
 
   return (
     <div className="flex min-h-screen">
-
-      <Sidebar />
 
       <main className="flex flex-1 flex-col">
         <>

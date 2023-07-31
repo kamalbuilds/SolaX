@@ -20,6 +20,12 @@ const NavMenu = ({ connected, publicKey }) => {
             action: () => Router.push('/exchange')
         },
         {
+            icon: IconUser,
+            item: 'Dashboard',
+            current: false,
+            action: () => Router.push('/dashboard')
+        },
+        {
             icon: IconVideo,
             item: 'Bridge Tokens',
             current: false,
@@ -37,12 +43,6 @@ const NavMenu = ({ connected, publicKey }) => {
             current: false,
             action : ()=> Router.push('/marketplace/new')
         },
-        {
-            icon :  IconCoin,
-            item : 'Set up Gari',
-            current: false,
-            action : ()=> Router.push('/marketplace/gari')
-        }
     ]
 
     return (

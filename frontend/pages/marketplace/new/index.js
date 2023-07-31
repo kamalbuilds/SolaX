@@ -1,10 +1,14 @@
 import Form from "../../../components/form";
 import LabeledTextField from "../../../components/form/input";
-import Sidebar from "../../../components/sidebar";
 import { z } from "zod";
 import LabeledFileField from "../../../components/form/input-file";
 import { supabase } from "../../../lib/supabaseClient";
 import { useRouter } from "next/router";
+import { useMetaplex } from "../../useMetaplex";
+import { useState } from "react";
+import { useWallet } from '@solana/wallet-adapter-react';
+import { Metadata , sendAndConfirmTransaction } from '@metaplex-foundation/js';
+
 const LoginValidation = z.object({
   product_name: z.string().min(1).max(255),
   price: z.number().min(0).max(999.999), 
@@ -12,6 +16,7 @@ const LoginValidation = z.object({
   category: z.string().min(1).max(255),
   picture_url: z.string().url({ message: "Upload Picture or try again" }),
 });
+
 
 const MarketplacePage = () => {
   const router = useRouter();
@@ -48,13 +53,61 @@ const MarketplacePage = () => {
     }
   };
   
+  const { metaplex } = useMetaplex();
+  const wallet = useWallet();
+  console.log("loop show ",wallet);
+  const mintNFT = async (productProperties) => {
+    // Your Solana wallet and connection setup
+
+  
+    // Create metadata for the NFT with product properties
+    const metadata = await Metadata.createMetaplexMetadata({
+      ...productProperties,
+      // Add any additional properties specific to your NFT metadata
+    });
+    
+    console.log(metadata,"metadata");
+    // Mint the NFT
+    const mintTx = await metaplex.mint(metadata);
+    
+    
+    // Wait for transaction confirmation
+    await sendAndConfirmTransaction(connection, mintTx);
+  };
+
+  // ah
+
+  const a = async () => {
+
+    const auctionHouseSettings = await metaplex
+      .auctionHouse()
+      .create({
+          sellerFeeBasisPoints: 500, // 5% fee
+          authority: metaplex.identity(),
+          requireSignOff: true,
+          canChangeSalePrice: true,
+          hasAuctioneer: true, // to enable auctioneer
+      });
+      console.log(auctionHouseSettings,"auctionHouseSettings");
+  }
+
+  const airdrop = async () => {
+    const airdropTx = await metaplex.airdrop({
+      to: metaplex.identity().publicKey,
+      amount: 1,
+    });
+    await sendAndConfirmTransaction(connection, airdropTx);
+  };
+    //     .rpc()
+  //     .airdrop(response.auctionHouse.feeAccountAddress, sol(1))
 
   return (
     <div className="flex min-h-screen  ">
-      <Sidebar />
+
       <main className="flex flex-1 flex-col">
         <div className="w-full">
           <div className="mx-auto max-w-xl">
+            <button onClick={a}>Create Auction House</button>
             <p className="my-5 text-center text-2xl font-bold">
               Enter Product Information 
             </p>
@@ -69,8 +122,30 @@ const MarketplacePage = () => {
                 picture_url: "",
               }}
               onSubmit={async (values) => {
-                console.log(values.product_name, "values");
+                console.log(values, "values");
                 const roomId = await createroom();
+
+                // Assuming you have the product details available after form submission
+                let productProperties = {
+                  name: values.product_name,
+                  price: values.price,
+                  category: values.category,
+                  image: values.picture_url,
+                  description: "My description",
+                  // Add more properties as needed for your NFT metadata
+                };
+
+                console.log(productProperties, "productProperties");
+
+                // Call the function to upload metadata to Arweave and get the URI
+                const { uri , metadata} = await metaplex.nfts().uploadMetadata(productProperties);
+
+                console.log(uri, "uri",metadata,"metadata");
+                // Store the metadataURI in state (you can also send it to Supabase)
+                setMetadataURI(uri);
+
+                // Call the function to mint the NFT with the product properties
+                await mintNFT(values);
 
                 try {
                   const { error } = await supabase

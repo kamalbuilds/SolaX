@@ -9,7 +9,6 @@ import TransactionsList from "../components/transaction/TransactionsList";
 import { useWallet } from "@solana/wallet-adapter-react";
 import TransactionQRModal from "../components/transaction/TransactionQRModal";
 import { useCashApp } from "../hooks/cashapp";
-import Sidebar from "../components/sidebar";
 
 const Home = () => {
   const { connected, publicKey } = useWallet();
@@ -19,8 +18,6 @@ const Home = () => {
 
   return (
     <div className="flex min-h-screen ">
-      <Sidebar />
-
       <main className="flex flex-1 flex-col">
         <>
           <TransactionsList connected={connected} transactions={transactions} />

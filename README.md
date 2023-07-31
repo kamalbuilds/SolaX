@@ -1,8 +1,8 @@
-# CryptoEase: A Cross-Chain, Privacy-Preserving Marketplace
+# Solax: A Cross-Chain, Privacy-Preserving Marketplace
 
-![CryptoEase](https://user-images.githubusercontent.com/96371303/215303732-b95caef4-f19c-435f-a866-ebee3d091866.svg)
+![Solax](https://user-images.githubusercontent.com/96371303/215303732-b95caef4-f19c-435f-a866-ebee3d091866.svg)
 
-CryptoEase is an intuitive Peer-to-Peer (P2P) marketplace that simplifies the experience of buying and selling items using different cryptocurrencies. With a focus on privacy and cross-chain compatibility, CryptoEase is powered by the Elusiv protocol for ensuring transactional privacy and the Wormhole protocol for facilitating cross-chain transactions.
+Solax is an intuitive Peer-to-Peer (P2P) marketplace that simplifies the experience of buying and selling items using different cryptocurrencies. With a focus on privacy and cross-chain compatibility, Solax is powered by the Elusiv protocol for ensuring transactional privacy and the Wormhole protocol for facilitating cross-chain transactions.
 
 
 Wormhole Bridging token Proof
@@ -45,7 +45,7 @@ This will start the application on your local machine.
 
 ## 🤝 Connect Wallets
 
-CryptoEase supports multiple wallets. To connect your wallet, go to the 'Wallet' tab and follow the instructions for your preferred wallet.
+Solax supports multiple wallets. To connect your wallet, go to the 'Wallet' tab and follow the instructions for your preferred wallet.
 
 ## 👥 How to Trade
 
@@ -62,8 +62,8 @@ We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for deta
 
 ## 📝 License
 
-CryptoEase is [MIT licensed](LICENSE).
+Solax is [MIT licensed](LICENSE).
 
 ---
 
-CryptoEase: Making the benefits of decentralized and privacy-preserving transactions accessible to everyone.
+Solax: Making the benefits of decentralized and privacy-preserving transactions accessible to everyone.

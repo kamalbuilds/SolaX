@@ -113,7 +113,7 @@ const TransactionMetadata = ({ metadata }) => {
 const TransactionFooter = () => {
   return (
     <div className="flex flex-col items-center justify-center text-sm text-gray-400">
-      <p>JAIPUR LNMIIT, India</p>
+      <p>Paid through SOLAX</p>
     </div>
   );
 };

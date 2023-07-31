@@ -8,7 +8,10 @@ import {
 import { AuthProvider } from '../AuthContext';
 import WalletConnectionProvider from "../context/WalletConnectionProvider";
 import { useState } from "react";
-import { MetaplexProvider } from "./MetaplexProvider";
+import { MetaplexProvider } from "../context/Metaplex";
+import { AuctionHouseProvider } from "../context/AuctionHouse";
+import Sidebar from "../components/sidebar";
+import { ChakraProvider, theme } from "@chakra-ui/react";
 
 function MyApp({ Component, pageProps }) {
   const [queryClient] = useState(() => new QueryClient());
@@ -20,17 +23,26 @@ function MyApp({ Component, pageProps }) {
       </Head>
 
       <AuthProvider>  
-
+        <ChakraProvider >
         <QueryClientProvider client={queryClient}>
           <Hydrate state={pageProps.dehydratedState}>
             <WalletConnectionProvider>
               <MetaplexProvider>
-                <Component {...pageProps} />
+                <AuctionHouseProvider>
+                  <>
+                    <div className="flex min-h-screen ">
+                      <Sidebar />
+                      <main className="flex flex-1 flex-col">
+                        <Component {...pageProps} />
+                      </main>
+                    </div>
+                  </>
+                </AuctionHouseProvider>
               </MetaplexProvider>
             </WalletConnectionProvider>
           </Hydrate>
         </QueryClientProvider>
-
+        </ChakraProvider>
         </AuthProvider>
     </>
   );
