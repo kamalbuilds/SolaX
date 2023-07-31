@@ -1,11 +1,11 @@
 // @ts-nocheck
-import Form from "../../../components/form";
-import LabeledTextField from "../../../components/form/input";
+import Form from "../../components/form/index";
+import LabeledTextField from "../../components/form/input";
 import { z } from "zod";
-import LabeledFileField from "../../../components/form/input-file";
-import { supabase } from "../../../lib/supabaseClient";
+import LabeledFileField from "../../components/form/input-file";
+import { supabase } from "../../lib/supabaseClient";
 import { useRouter } from "next/router";
-import { useMetaplex } from '../../../context/Metaplex';
+import { useMetaplex } from '../../context/Metaplex';
 import { useState } from "react";
 import { useWallet } from '@solana/wallet-adapter-react';
 
@@ -21,7 +21,7 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import { token, toMetaplexFileFromBrowser } from '@metaplex-foundation/js'
-import { useAuctionHouse } from '../../../context/AuctionHouse';
+import { useAuctionHouse } from '../../context/AuctionHouse';
 
 
 const LoginValidation = z.object({
@@ -76,8 +76,6 @@ const MarketplacePage = () => {
   const { metaplex } = useMetaplex();
   const wallet = useWallet();
   console.log("loop show ",wallet);
-
-  // ah
 
   const handleCreateSFT = useCallback(async (values, uri) => {
     if (  !metaplex || !image || !wallet || !wallet.publicKey) {

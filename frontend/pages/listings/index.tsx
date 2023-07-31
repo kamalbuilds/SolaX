@@ -19,8 +19,10 @@ import { useWallet } from '@solana/wallet-adapter-react'
 import ArtworkCard from '../../components/ArtworkCard';
 import { useAuctionHouse } from '../../context/AuctionHouse'
 import { useMetaplex } from '../../context/Metaplex'
-
+import { createNonce } from '../../components/nonce/createnonce';
+import { getNonce } from '../../components/nonce/getnonce';
 import useListings from '../../hooks/useListings'
+import { set } from 'date-fns'
 
 const Listings: NextPage = () => {
   const wallet = useWallet()
@@ -30,13 +32,37 @@ const Listings: NextPage = () => {
   const { listings, loadListings, isPending: isPendingListings } = useListings()
   const { metaplex } = useMetaplex()
   const { auctionHouse, isPending } = useAuctionHouse()
-
+  const [noncepublickey, setNoncePublicKey] = useState<string>()
   const [selectedListing, setSelectedListings] = useState<Listing>()
   const [tokenAmount, setTokenAmount] = useState<number>()
   const isSftSelected = isSft(selectedListing?.asset)
 
   const isLoading = isPendingListings || isPending
 
+
+  const createNonceAccount = async () => {
+    const result = await createNonce();
+    // result.nonceAccount contains the public key of the nonce account
+    // result.txhash contains the transaction hash
+    console.log(`Nonce account: ${result.nonceAccount}`);
+    console.log(`Transaction hash: ${result.txhash}`);
+    setNoncePublicKey(result.nonceAccount);
+    return result.nonceAccount;
+  };
+  
+  const getNonceFromAccount = async (nonceAccountPublicKey) => {
+    const result = await getNonce(nonceAccountPublicKey);
+    // result.nonce contains the nonce
+    // result.authority contains the public key of the authority
+    // result.feeCalculator contains the fee calculator
+    console.log(`Nonce: ${result?.nonce}`);
+    console.log(`Authority: ${result?.authority}`);
+    console.log(`Fee calculator: ${JSON.stringify(result?.feeCalculator)}`);
+  
+    return result?.nonce;
+  };
+
+  
   const handleExecuteSale = useCallback(async () => {
     if (
       !selectedListing ||
@@ -47,7 +73,7 @@ const Listings: NextPage = () => {
     ) {
       return
     }
-
+    console.log('selectedListing', selectedListing, isSftSelected)
     if (isSftSelected) {
       if (!tokenAmount) return
 
@@ -99,7 +125,7 @@ const Listings: NextPage = () => {
 
   useEffect(() => {
     loadListings()
-  }, [loadListings])
+  }, [loadListings]);
 
   return (
     <Box flexGrow={1} position="relative">
@@ -180,6 +206,9 @@ const Listings: NextPage = () => {
             ))}
           </Grid>
         )}
+
+        <Button onClick={createNonceAccount}>Create Nonce Account</Button>
+        <Button onClick={()=> getNonceFromAccount(noncepublickey)}>Get Nonce</Button>
       </Flex>
     </Box>
   )
