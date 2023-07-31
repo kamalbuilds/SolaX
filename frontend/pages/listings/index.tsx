@@ -16,7 +16,7 @@ import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { useWallet } from '@solana/wallet-adapter-react'
 // @ts-ignore
-import ArtworkCard from '../../components/ArtworkCard';
+import ArtworkCard from '../../components/ArtWorkCard';
 import { useAuctionHouse } from '../../context/AuctionHouse'
 import { useMetaplex } from '../../context/Metaplex'
 import { createNonce } from '../../components/nonce/createnonce';

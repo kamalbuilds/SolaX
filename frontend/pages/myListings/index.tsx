@@ -12,7 +12,7 @@ import {
 import { Listing } from '@metaplex-foundation/js'
 import { NextPage } from 'next'
 
-import ArtworkCard from '../../components/ArtworkCard'
+import ArtworkCard from '../../components/ArtWorkCard'
 import { useAuctionHouse } from '../../context/AuctionHouse'
 import { useMetaplex } from '../../context/Metaplex'
 import { useRouter } from 'next/router'

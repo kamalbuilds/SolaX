@@ -14,7 +14,7 @@ import {
 import { isSft, LoadMetadataOutput, sol } from '@metaplex-foundation/js'
 import { useRouter } from 'next/router'
 
-import ArtworkCard from '../../components/ArtworkCard'
+import ArtworkCard from '../../components/ArtWorkCard'
 import { useAuctionHouse } from '../../context/AuctionHouse'
 import { useMetaplex } from '../../context/Metaplex'
 import useAssets from '../../hooks/useAssets'
