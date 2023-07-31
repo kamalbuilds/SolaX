@@ -43,7 +43,10 @@ const DEFAULT_CONTEXT = {
 const AuctionHouseContext = createContext<AuctionHouseState>(DEFAULT_CONTEXT)
 
 export const AuctionHouseProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [auctionHouse, setAuctionHouse] = useState<AuctionHouse>()
+  const [auctionHouse, setAuctionHouse] = useState<AuctionHouse>();
+  console.log(auctionHouse?.feeAccountAddress.toBase58(),"auctionHouse");
+
+  
   const [isPending, setIsPending] = useBoolean()
 
   const { metaplex } = useMetaplex()

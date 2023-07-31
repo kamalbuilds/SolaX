@@ -43,7 +43,7 @@ const useListings = () => {
                 : client.loadListing({ lazyListing: listing })
             )
           )
-
+          // @ts-ignore
           setListings(fetchedListings)
         } catch {
           // do nothing, user doesn't have AH
