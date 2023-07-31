@@ -1,5 +1,5 @@
 import styles from '../styles/Home.module.css';
-import { useMetaplex } from "../../frontend/pages/useMetaplex";
+import { useMetaplex } from "../context/Metaplex";
 import { useState } from "react";
 import { useWallet } from '@solana/wallet-adapter-react';
 
