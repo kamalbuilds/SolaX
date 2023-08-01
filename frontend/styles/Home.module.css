@@ -87,3 +87,13 @@
   padding:5px;
   margin:5px;
 }
+
+.main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 20px;
+  padding: 4rem;
+}

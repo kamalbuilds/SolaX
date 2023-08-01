@@ -17,6 +17,7 @@ const ArtworkCard: React.FC<Props> = ({
   ...boxProps
 }) => {
   const { name } = artwork
+  console.log(artwork,"artwork")
   const imageSrc = artwork.json?.image
   const tokenType = isSft(artwork) ? 'SFT' : 'NFT'
 

@@ -13,9 +13,11 @@ import { AuctionHouseProvider } from "../context/AuctionHouse";
 import Sidebar from "../components/sidebar";
 import { ChakraProvider, theme } from "@chakra-ui/react";
 import  SolPriceProvider  from "../context/SolPriceProvider.tsx";
+import { useColorMode } from "@chakra-ui/react";
 
 function MyApp({ Component, pageProps }) {
   const [queryClient] = useState(() => new QueryClient());
+  
   return (
     <>
       <Head>

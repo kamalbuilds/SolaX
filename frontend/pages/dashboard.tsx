@@ -11,7 +11,7 @@ import { PublicKey } from '@solana/web3.js'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
-  const [auctionHouseAddress, setAHAddress] = useState<PublicKey>()
+  const [auctionHouseAddress, setAuctionHouse] = useState<PublicKey>()
   const wallet = useWallet()
   const {
     auctionHouse,
@@ -28,7 +28,7 @@ const Home: NextPage = () => {
   const handleAuctionHouseChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
       e.preventDefault()
-      setAHAddress(new PublicKey(e.target.value))
+      setAuctionHouse(new PublicKey(e.target.value))
     },
     []
   )

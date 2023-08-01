@@ -1,10 +1,11 @@
 import { useState } from "react";
 import Modal from "../Modal";
 import { useCashApp } from "../../hooks/cashapp.js";
+import { useRouter } from "next/router";
 
 const NewTransactionModal = ({ modalOpen, setModalOpen, addTransaction }) => {
   const { amount, setAmount } = useCashApp();
-
+  const router = useRouter();
   const [receiver, setReceiver] = useState("");
   const [transactionPurpose, setTransactionPurpose] = useState("");
 
@@ -77,6 +78,13 @@ const NewTransactionModal = ({ modalOpen, setModalOpen, addTransaction }) => {
             className="w-full rounded-lg bg-[#00d54f] py-3 px-12 text-white hover:bg-opacity-70"
           >
             Pay
+          </button>
+
+          <button
+            onClick={() => router.push('/pvttransactions')}
+            className="w-full rounded-lg bg-[#00d54f] py-3 px-12 text-white hover:bg-opacity-70"
+          >
+            Pvt Pay
           </button>
         </div>
       </div>

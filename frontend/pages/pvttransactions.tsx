@@ -269,7 +269,8 @@ export default function Home() {
           "https://api.devnet.solana.com/"
         );
         const usdcMint = new PublicKey(
-          "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+          "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU"
+          // "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
         );
         if (wallet.publicKey) {
           const userTokenAccount = await getAssociatedTokenAddress(
@@ -345,7 +346,7 @@ export default function Home() {
     const fetchPoolData = async () => {
       setLoading(true);
       try {
-        const response = await fetch("/api/2");
+        const response = await fetch("../api/2");
         const data = await response.json();
         if (response.ok) {
           const processedData = data.data.map(
@@ -727,7 +728,7 @@ export default function Home() {
         console.log(value + " is NOT a valid Solana address"); // And here
 
         // Rest of your code...
-        const res = await fetch("/api/3", {
+        const res = await fetch("../api/3", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -1015,6 +1016,17 @@ export default function Home() {
                               height={20}
                             />
                             <span className="ml-2">USDC</span>
+                          </div>
+                        </SelectValue>
+                        <SelectValue>
+                          <div className="flex flex-row-2">
+                            <Image
+                              src="/mSOL.png"
+                              alt="SOL"
+                              width={20}
+                              height={20}
+                            />
+                            <span className="ml-2">SOL</span>
                           </div>
                         </SelectValue>
                       </SelectTrigger>

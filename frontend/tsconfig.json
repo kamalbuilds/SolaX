@@ -22,7 +22,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "pages/Tradinganalysis.jsx"  ],
   "exclude": [
     "node_modules"
   ]
