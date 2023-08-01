@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Avatar, Box, BoxProps, Flex, Image, Text } from '@chakra-ui/react'
 import { isSft, Listing, LoadMetadataOutput , lamports } from '@metaplex-foundation/js'
 import React, { useContext} from 'react';
@@ -25,6 +26,7 @@ const ArtworkCard: React.FC<Props> = ({
   console.log(solPrice,"solPrice")
   let priceInSol = formatPrice(listing);
   let priceInUsd = priceInSol.split(' ')[1] * solPrice;
+
   console.log(priceInSol,priceInUsd,priceInSol.split(' ')[1],"priceInSol,priceInUsd")
   return (
     <Box

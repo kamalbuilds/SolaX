@@ -9,6 +9,7 @@ const pythPublicKey = getPythProgramKeyForCluster(PYTHNET_CLUSTER_NAME);
 // This feed ID comes from this list: https://pyth.network/developers/price-feed-ids#solana-mainnet-beta
 const feeds = [new PublicKey('H6ARHf6YXhGYeQfUzQNGk6rDNnLBQKrenN712K4AQJEG')];
 
+// @ts-ignore
 const SolPriceProvider: React.FC = ({ children }) => {
   const [solPrice, setSolPrice] = useState(0);
 
