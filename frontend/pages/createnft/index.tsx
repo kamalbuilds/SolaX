@@ -30,6 +30,7 @@ const LoginValidation = z.object({
   // price: z.number().min(0).transform((val) => parseFloat(val.toFixed(3))), // Allow up to 3 decimal places
   category: z.string().min(1).max(255),
   picture_url: z.string().url({ message: "Upload Picture or try again" }),
+  description: z.string().min(1).max(255),
 });
 
 
@@ -75,7 +76,6 @@ const MarketplacePage = () => {
   
   const { metaplex } = useMetaplex();
   const wallet = useWallet();
-  console.log("loop show ",wallet);
 
   const handleCreateSFT = useCallback(async (values, uri) => {
     if (  !metaplex || !image || !wallet || !wallet.publicKey) {
@@ -84,6 +84,7 @@ const MarketplacePage = () => {
 
     console.log(metadataURI,"metadataURI")
     let title = ''
+    let description = ''
     if (tokenAmount && tokenAmount > 1) {
       await metaplex.nfts().createSft({
         uri,
@@ -93,7 +94,13 @@ const MarketplacePage = () => {
         tokenAmount: token(tokenAmount),
       })
 
-      title = 'SFT created.'
+      toast({
+        title: 'SFT created 🎉',
+        description: "We've created your SFT. 🚀",
+        status: 'success',
+        duration: 9000,
+        isClosable: true,
+      })
     } else {
       await metaplex.nfts().create({
         uri,
@@ -102,17 +109,16 @@ const MarketplacePage = () => {
         tokenOwner: wallet.publicKey,
       })
 
-      title = 'NFT created 🎉'
+      toast({
+        title: 'NFT created 🎉',
+        description: "We've created your NFT. 🚀",
+        status: 'success',
+        duration: 9000,
+        isClosable: true,
+      })
     }
 
-    toast({
-      title,
-      description: "We've created your SFT. 🚀",
-      status: 'success',
-      duration: 9000,
-      isClosable: true,
-    })
-    router.push('/')
+    router.push('/dashboard')
   }, [wallet, router, metaplex, auctionHouse, toast, image, tokenAmount , metadataURI])
 
   const handleTokenAmountChange = useCallback(
@@ -145,6 +151,7 @@ const MarketplacePage = () => {
                 price: "",
                 category: "",
                 picture_url: "",
+                description: "",
               }}
               onSubmit={async (values) => {
                 console.log(values, "values");
@@ -156,7 +163,8 @@ const MarketplacePage = () => {
                   price: values.price,
                   category: values.category,
                   image: values.picture_url,
-                  description: "My description",
+                  description: values.description,
+                  roomId: roomId,
                   // Add more properties as needed for your NFT metadata
                 };
 
@@ -178,7 +186,7 @@ const MarketplacePage = () => {
                     .insert({price : values.price, product_name : values.product_name, category : values.category, picture_url : values.picture_url , room_id: roomId});
 
                   if (!error) {
-                    router.push("/marketplace");
+                    router.push("/dashboard");
                   }
                 } catch (error) {
                   console.log(error,"some error occured");
@@ -206,6 +214,12 @@ const MarketplacePage = () => {
                 name="category"
                 label="Category"
                 placeholder="Category"
+              />
+
+              <LabeledTextField
+                name="description"
+                label="Description"
+                placeholder="Write a brief description about your product"
               />
 
               <LabeledFileField

@@ -51,7 +51,7 @@ const Home: NextPage = () => {
                   Create Listing
                 </Button>
               </Link>
-              <Link href="/createNFT">
+              <Link href="/createnft">
                 <Button colorScheme="purple" width="100%" size="lg">
                   Create NFT
                 </Button>
@@ -90,7 +90,7 @@ const Home: NextPage = () => {
                 }
                 disabled={!auctionHouseAddress}
               >
-                Connect Auction House
+                Connect your Store
               </Button>
               <Button
                 colorScheme="purple"
