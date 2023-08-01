@@ -1,6 +1,6 @@
 import { Button } from "@chakra-ui/button";
 import { useColorMode } from "@chakra-ui/color-mode";
-import { MoonIcon, SunIcon } from "@chakra-ui/icons";
+import { IconSunFilled , IconMoonFilled } from '@tabler/icons-react';
 
 const ToggleColorMode = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -13,9 +13,9 @@ const ToggleColorMode = () => {
       m="1rem"
     >
       {colorMode === "dark" ? (
-        <SunIcon color="orange.200" />
+        <IconSunFilled size={24} />
       ) : (
-        <MoonIcon color="blue.700" />
+        <IconMoonFilled size={24} />
       )}
     </Button>
   );
