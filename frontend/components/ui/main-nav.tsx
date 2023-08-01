@@ -17,14 +17,7 @@ export function MainNav({ items }: MainNavProps) {
   const imageSize = isDesktopOrLaptop ? 130 : 30;
   return (
     <div className="flex gap-6 md:gap-10">
-        <a className="flex items-center space-x-2">
-          <Image
-            src={isDesktopOrLaptop ? "/monstre.png" : "/monstre_m.png"}
-            alt="Monstre"
-            width={imageSize}
-            height={imageSize}
-          />
-        </a>
+      <h2>Spend Money Privately</h2>
     </div>
   )
 }

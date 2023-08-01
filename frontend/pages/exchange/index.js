@@ -4,7 +4,6 @@ const SimpleSwap = () => {
   return (
     <div>
       <div className="flex min-h-screen ">
-
         <main className="flex flex-1 flex-col p-5">
           <div>
             <h1 className="heading ">

@@ -11,10 +11,15 @@ import { useState } from "react";
 import { MetaplexProvider } from "../context/Metaplex";
 import { AuctionHouseProvider } from "../context/AuctionHouse";
 import Sidebar from "../components/sidebar";
-import { ChakraProvider, theme } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
+import  SolPriceProvider  from "../context/SolPriceProvider.tsx";
+import  theme from "../components/theme";
+import { ColorModeScript } from "@chakra-ui/color-mode";
+import ToggleColorMode from "../components/ToggleColorMode";
 
 function MyApp({ Component, pageProps }) {
   const [queryClient] = useState(() => new QueryClient());
+
   return (
     <>
       <Head>
@@ -23,20 +28,24 @@ function MyApp({ Component, pageProps }) {
       </Head>
 
       <AuthProvider>  
-        <ChakraProvider >
+        <ChakraProvider theme={theme}>
+        <ColorModeScript initialColorMode={theme.config.initialColorMode} />
         <QueryClientProvider client={queryClient}>
           <Hydrate state={pageProps.dehydratedState}>
             <WalletConnectionProvider>
               <MetaplexProvider>
                 <AuctionHouseProvider>
-                  <>
-                    <div className="flex min-h-screen ">
-                      <Sidebar />
-                      <main className="flex flex-1 flex-col">
-                        <Component {...pageProps} />
-                      </main>
-                    </div>
-                  </>
+                  <SolPriceProvider>
+                    <>
+                      <div className="flex min-h-screen ">
+                        <Sidebar />
+                        <main className="flex flex-1 flex-col">
+                          <ToggleColorMode />
+                          <Component {...pageProps} />
+                        </main>
+                      </div>
+                    </>
+                  </SolPriceProvider>
                 </AuctionHouseProvider>
               </MetaplexProvider>
             </WalletConnectionProvider>

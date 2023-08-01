@@ -1,4 +1,4 @@
-import { IconClockHour1 , IconCoin , IconUser , IconVideo , IconBuildingStore , IconNewSection } from '@tabler/icons-react';
+import { IconClockHour1 , IconCoin , IconUser , IconVideo , IconBuildingStore , IconNewSection , IconBuildingBridge, IconHome, IconTrademark, IconChartLine } from '@tabler/icons-react';
 import { classNames } from '../../utils/classNames'
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
 import { truncate } from '../../utils/string'
@@ -20,13 +20,13 @@ const NavMenu = ({ connected, publicKey }) => {
             action: () => Router.push('/exchange')
         },
         {
-            icon: IconUser,
+            icon: IconHome,
             item: 'Dashboard',
             current: false,
             action: () => Router.push('/dashboard')
         },
         {
-            icon: IconVideo,
+            icon: IconBuildingBridge,
             item: 'Bridge Tokens',
             current: false,
             action: () => Router.push('/bridge')
@@ -42,6 +42,12 @@ const NavMenu = ({ connected, publicKey }) => {
             item : 'Add Products',
             current: false,
             action : ()=> Router.push('/createnft')
+        },
+        {
+            icon :  IconChartLine,
+            item : 'Trading Analysis',
+            current: false,
+            action : ()=> Router.push('/Tradinganalysis')
         },
     ]
 
