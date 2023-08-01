@@ -38,7 +38,7 @@ const Listings: NextPage = () => {
   const isSftSelected = isSft(selectedListing?.asset)
 
   const isLoading = isPendingListings || isPending
-
+  console.log(selectedListing,"selectedListing")
 
   const createNonceAccount = async () => {
     const result = await createNonce();
@@ -104,7 +104,7 @@ const Listings: NextPage = () => {
       isClosable: true,
     })
 
-    router.push('/')
+    router.push('/dashboard')
   }, [
     isSftSelected,
     tokenAmount,
@@ -189,6 +189,17 @@ const Listings: NextPage = () => {
                 onClick={handleExecuteSale}
               >
                 Buy
+              </Button>
+
+              <Button
+                colorScheme="blue"
+                size="lg"
+                mt={5}
+                w="100%"
+                disabled={isSftSelected && !tokenAmount}
+                onClick={() => router.push(`/connect/${selectedListing?.asset.json.roomId}`)}
+              >
+                Connect with the Owner
               </Button>
             </Box>
           </Flex>

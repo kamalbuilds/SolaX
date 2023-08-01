@@ -21,8 +21,6 @@ function Connect( ) {
 
     <div>
       <div className="flex min-h-screen ">
-        <Sidebar />
-
         <main className="flex flex-1 flex-col p-5">
 
           <div className="App">

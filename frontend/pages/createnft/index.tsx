@@ -30,6 +30,7 @@ const LoginValidation = z.object({
   // price: z.number().min(0).transform((val) => parseFloat(val.toFixed(3))), // Allow up to 3 decimal places
   category: z.string().min(1).max(255),
   picture_url: z.string().url({ message: "Upload Picture or try again" }),
+  description: z.string().min(1).max(255),
 });
 
 
@@ -145,6 +146,7 @@ const MarketplacePage = () => {
                 price: "",
                 category: "",
                 picture_url: "",
+                description: "",
               }}
               onSubmit={async (values) => {
                 console.log(values, "values");
@@ -156,7 +158,8 @@ const MarketplacePage = () => {
                   price: values.price,
                   category: values.category,
                   image: values.picture_url,
-                  description: "My description",
+                  description: values.description,
+                  roomId: roomId,
                   // Add more properties as needed for your NFT metadata
                 };
 
@@ -178,7 +181,7 @@ const MarketplacePage = () => {
                     .insert({price : values.price, product_name : values.product_name, category : values.category, picture_url : values.picture_url , room_id: roomId});
 
                   if (!error) {
-                    router.push("/marketplace");
+                    router.push("/dashboard");
                   }
                 } catch (error) {
                   console.log(error,"some error occured");
@@ -206,6 +209,12 @@ const MarketplacePage = () => {
                 name="category"
                 label="Category"
                 placeholder="Category"
+              />
+
+              <LabeledTextField
+                name="description"
+                label="Description"
+                placeholder="Write a brief description about your product"
               />
 
               <LabeledFileField

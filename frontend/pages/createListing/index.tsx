@@ -60,7 +60,7 @@ const CreateListing: React.FC = () => {
       isClosable: true,
     })
 
-    router.push('/')
+    router.push('/dashboard')
   }, [router, metaplex, auctionHouse, selectedAsset, price, toast])
 
   const handleSetPrice = useCallback((event: ChangeEvent<HTMLInputElement>) => {
