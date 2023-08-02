@@ -37,6 +37,19 @@ https://mumbai.polygonscan.com/tx/0xf3a4c47a7fd37d25350d9cb3e2efc5fc1a38476b2b36
 
 - Time-Dependent Transactions: If you have transactions that are dependent on a specific time or condition, durable nonces can be extremely useful. Users can sign transactions in advance and then have them automatically submitted when the specified conditions are met.
 
+** Solanapay powered QR Code Payments
+
+The Transfer request follows  this mechanism 
+
+![image](https://user-images.githubusercontent.com/95926324/215766384-940c1677-fcc7-4962-892e-a50e3419a86f.png)
+
+* Customer goes to the payment page
+* Merchant frontend (client) sends order information to the backend
+* Merchant backend (server) generates a reference public key and stores it in a database with the expected amount for the shopping cart / pending purchase (unique to each customer's checkout session).
+* Merchant backend redirects the user to the confirmation page with the generated reference public key.
+* The confirmation page redirects to the merchant with the transaction signature.
+* Merchant backend checks that the transaction is valid for the checkout session by validating the transaction with the reference and amount stored in step 3.
+  
 ## 🔧 Setup
 
 1. Install the dependencies:
