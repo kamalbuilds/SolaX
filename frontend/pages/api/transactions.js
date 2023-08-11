@@ -17,7 +17,7 @@ export default async function handler(req, res) {
     web3authClientId: "",
     verifierName: "",
     verifierDomain: "",
-    environment : "devnet"
+    environment : "mainnet-beta"
   };
   gariSdk.sdkInitialize(configDetails);
    

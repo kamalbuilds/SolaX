@@ -25,7 +25,8 @@
   
   export const MetaplexProvider: FC<PropsWithChildren> = ({ children }) => {
     const { connection } = useConnection()
-    const wallet = useWallet()
+    const wallet = useWallet();
+    console.log(connection,wallet)
   
     const metaplex = useMemo(
       () =>
@@ -33,7 +34,7 @@
           .use(walletAdapterIdentity(wallet))
           .use(
             bundlrStorage({
-              address: 'https://devnet.bundlr.network',
+              address: 'https://mainnet-beta.bundlr.network',
             })
           ),
       [connection, wallet]

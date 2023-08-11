@@ -7,7 +7,7 @@ const config= {
   tokens: ["ETH", "WETH", "MATIC", "WMATIC","USDC","Gh9ZwEmdLJ8DscKNTkTqPbNwLNNBjuSzaG9Vp2KGtKJr"],
   rpc: {
     ethereum: "https://rpc.ankr.com/eth",
-    solana: "https://solana-devnet.g.alchemy.com/v2/7rwYXko3FDfNXH1zD-Y3o2Gd1LTlzTfU",
+    solana: "https://solana-mainnet.g.alchemy.com/v2/SW3uzyu7hPsAhI5878T7jffYghoOuDLk",
   },
   mode: 'dark',
 }

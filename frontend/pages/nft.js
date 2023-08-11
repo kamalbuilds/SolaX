@@ -2,7 +2,7 @@ import { Metaplex, keypairIdentity, bundlrStorage } from "@metaplex-foundation/j
 import { Connection, Keypair } from "@solana/web3.js";
 import { useEffect , useState} from "react";
 
-const rpcUrl = "https://api.devnet.solana.com/";
+const rpcUrl = "https://solana-mainnet.g.alchemy.com/v2/SW3uzyu7hPsAhI5878T7jffYghoOuDLk";
 const connection = new Connection(rpcUrl, "confirmed");
 console.log("Connection to cluster established:", rpcUrl);
 
@@ -26,7 +26,7 @@ export default function MyComponent() {
   .use(keypairIdentity(wallet))
   .use(
     bundlrStorage({
-      address: "https://devnet.bundlr.network",
+      address: "https://mainnet-beta.bundlr.network",
       providerUrl: rpcUrl,
       timeout: 60000,
     })

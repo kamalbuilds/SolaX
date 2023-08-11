@@ -135,7 +135,7 @@ export default function SignIn() {
       web3authClientId: "",
       verifierName: "",
       verifierDomain: "",
-      environment: "devnet",
+      environment: "mainnet-beta",
     };
     gariSdk.sdkInitialize(configDetails);
   }, []);
