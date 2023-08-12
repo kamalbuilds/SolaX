@@ -34,7 +34,7 @@
           .use(walletAdapterIdentity(wallet))
           .use(
             bundlrStorage({
-              address: 'https://mainnet-beta.bundlr.network',
+              address: 'https://node1.bundlr.network',
             })
           ),
       [connection, wallet]
