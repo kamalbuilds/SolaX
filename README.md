@@ -1,4 +1,4 @@
-# SOLAX: Relax when you have SOLAX
+# SOLAX: Solana Unleashed -> Create Your Storefront with Compressed NFTs powered by Secure Transactions.
 
 A Cross-Chain, Privacy-Preserving Dapp built for Merchants and Users alike empoweres merchants with Point of Sale for Merchants to Scale built on Solana.
 
@@ -8,7 +8,6 @@ A Cross-Chain, Privacy-Preserving Dapp built for Merchants and Users alike empow
 
 Solax is an intuitive Peer-to-Peer (P2P) marketplace that simplifies the experience of buying and selling items using different cryptocurrencies. With a focus on privacy and cross-chain compatibility, Solax is powered by the Elusiv protocol for ensuring transactional privacy and the Wormhole protocol for facilitating cross-chain transactions.
 
-
 Wormhole Bridging token Proof
 
 Bridging MATIC(Mumbai) -> WMATIC(SOLANA Devnet)
@@ -17,60 +16,51 @@ https://mumbai.polygonscan.com/tx/0xf3a4c47a7fd37d25350d9cb3e2efc5fc1a38476b2b36
 
 ## 🌟 Features
 
-**One-Click Purchases**: Buy items with a single click, using different cryptocurrencies from different blockchains seamlessly and without the need to understand complex transaction processes.
+**No-Code Storefront Setup**: As a merchant, set up your own digital storefront easily using Shyft and Underdog protocol.
 
-**No-Code Storefront Setup**: As a merchant, set up your own digital storefront easily with no coding knowledge required. Get your products listed on marketplace page.
+**Products as CNFTs**: As a merchant Get your store setup and tokenize your products in the form of Compressed NFTs. In the background a product is created using Sphere and the cnft gets created and the payment link is attatched to the cnft as a attribute.
 
-**Privacy Protection**: Make purchases with confidence knowing that your personal information and transaction details are kept private, thanks to Elusiv protocol.
+**Most efficient Swaps with Jupiter for Payments**: Swaps any tokens to any token with Jupiter for doing payments to the products. Jupiter provides you with the most efficient deals.
 
-**Interoperable Wallets**: No need to switch between different wallets across multiple chains to make transactions on different blockchains. Connect your existing wallets and let our platform handle cross-chain transactions via the Wormhole protocol.
+We have also created a NPM package for Other Dapps to easily Integrate Jupiter Swaps 
+
+https://www.npmjs.com/package/jupiter-swap-widget repo -> https://github.com/kamalbuilds/Jupiter-swap-widget
+
+**One-Click Purchases with Sphere**: Buy items with a single click, using different cryptocurrencies from different blockchains seamlessly and without the need to understand complex transaction processes with Sphere.
+
+**Privacy Protection with Elusiv Protocol**: Make purchases with confidence knowing that your personal information and transaction details are kept private, thanks to Elusiv protocol.
+
+**Token Bridging powered by Wormhole**: No need to switch between different wallets across multiple chains to make transactions on different blockchains. Connect your existing wallets and let our platform handle cross-chain transactions via the Wormhole protocol.
 
 **Simplified Crypto Exchange**: Swap your cryptocurrencies into SOL tokens or other preferred cryptocurrencies easily with our integrated coin-exchange system.
 
-**Transparent Pricing**: See prices in your chosen cryptocurrency and view the value of your holdings across different blockchains all in one place. Thanks to Pyth Pricing Feeds.
+**Solanapay powered QR Code Payments**
 
-**Durable Nounces**: Sign now and pay later when the product is available or Purchase on your own timings.
-
-- Pre-Authorized Payments: Users could pre-authorize the payment for a product that isn't yet available or for a service to be rendered in the future. By using a durable nonce, the buyer can sign the transaction at the time of agreement and the seller can submit it when the product or service is ready.
-
-- Optimized Gas Fees: In a congested network, transaction fees (gas fees) can fluctuate rapidly. Durable nonces can allow users to sign transactions during periods of high fees and then submit them when the fees decrease.
-
-- Batched Transactions: Sometimes, it might be more efficient to batch multiple transactions and process them all at once. Durable nonces can be used to create these transactions ahead of time and then submit them together when ready.
-
-- Time-Dependent Transactions: If you have transactions that are dependent on a specific time or condition, durable nonces can be extremely useful. Users can sign transactions in advance and then have them automatically submitted when the specified conditions are met.
-
-** Solanapay powered QR Code Payments
-
-The Transfer request follows  this mechanism 
+QR based easy payments for our other Payment entities. 
 
 ![image](https://user-images.githubusercontent.com/95926324/215766384-940c1677-fcc7-4962-892e-a50e3419a86f.png)
 
-* Customer goes to the payment page
-* Merchant frontend (client) sends order information to the backend
-* Merchant backend (server) generates a reference public key and stores it in a database with the expected amount for the shopping cart / pending purchase (unique to each customer's checkout session).
-* Merchant backend redirects the user to the confirmation page with the generated reference public key.
-* The confirmation page redirects to the merchant with the transaction signature.
-* Merchant backend checks that the transaction is valid for the checkout session by validating the transaction with the reference and amount stored in step 3.
-  
 ## 🔧 Setup
 
 1. Install the dependencies:
 
 ```bash
+cd frontend
+
 npm install
 ```
 
 2. Start the application:
 
 ```bash
-npm start
+npm run dev
 ```
 
 This will start the application on your local machine. 
 
 ## 🤝 Connect Wallets
 
-Solax supports multiple wallets. To connect your wallet, go to the 'Wallet' tab and follow the instructions for your preferred wallet.
+Solax supports multiple wallets. To connect your wallet, go to the 'Wallet' tab and follow the instructions for your preferred solana wallet.
 
 ## 👥 How to Trade
 
@@ -80,14 +70,6 @@ Solax supports multiple wallets. To connect your wallet, go to the 'Wallet' tab 
 4. Done! The item is yours.
 
 For selling items, list your product by clicking on 'Sell', fill in the product details, set your price, and you're all set!
-
-## 🙏 Contribute
-
-We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to contribute.
-
-## 📝 License
-
-Solax is [MIT licensed](LICENSE).
 
 ---
 

@@ -21,7 +21,7 @@ const NavMenu = ({ connected, publicKey }) => {
         },
         {
             icon: IconHome,
-            item: 'Dashboard',
+            item: 'Setup Store',
             current: false,
             action: () => Router.push('/dashboard')
         },
@@ -33,9 +33,9 @@ const NavMenu = ({ connected, publicKey }) => {
         },
         {
             icon: IconBuildingStore,
-            item: 'MarketPlace',
+            item: 'All Stores',
             current: false,
-            action : ()=> Router.push('/listings')
+            action : ()=> Router.push('/allstores')
         },
         {
             icon :  IconNewSection,

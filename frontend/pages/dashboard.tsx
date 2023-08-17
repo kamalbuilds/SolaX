@@ -50,7 +50,6 @@ const Home: NextPage = () => {
       console.error(error);
     }
   };
-
   return (
     <Box flexGrow={1} position="relative">
       <Flex align="center" justify="center" height="100vh">

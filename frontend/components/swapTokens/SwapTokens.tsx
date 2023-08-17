@@ -148,13 +148,9 @@ const SwapTokens = ({ tokenList }: any) => {
                 console.log("Error", error);
             }
 
-
             setLoading(false);
 
         }
-
-
-
 
     }
 

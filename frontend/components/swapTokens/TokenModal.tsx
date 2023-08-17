@@ -17,7 +17,7 @@ import {
     ModalCloseButton,
 
     useDisclosure,
-
+    
     Button,
 
 } from '@chakra-ui/react'
@@ -25,24 +25,9 @@ import {
 import SwapTokens from './SwapTokens';
 
 
-
-
 const TokenModal = () => {
-
-
-
-
     const { isOpen, onOpen, onClose } = useDisclosure();
-
-
-
-
     const [tokenList, setTokenList] = useState();
-
-
-
-
-
 
 
     /**API to call Token Modal and also Jupiter TokenAPI */
@@ -59,17 +44,11 @@ const TokenModal = () => {
 
     }
 
-
-
-
     return (
 
         <div>
 
             <Button onClick={handleOpenModal}>Swap with Jupiter</Button>
-
-
-
 
             <Modal isOpen={isOpen} onClose={onClose}>
 

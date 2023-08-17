@@ -21,11 +21,11 @@ const Home = () => {
       <main className="flex flex-1 flex-col">
         <>
           <TransactionsList connected={connected} transactions={transactions} />
-          <img
+          {/* <img
             src="/images/p2p.jpeg"
             className="m-auto mt-10 aspect-square h-[500px] w-[500px]"
             alt="helloworld"
-          />
+          /> */}
         </>
         {/* <SearchBar /> */}
         {/* {JSON.stringify(transactions)} */}
