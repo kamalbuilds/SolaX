@@ -1,8 +1,12 @@
-# SOLAX: Solana Unleashed -> Create Your Storefront with Compressed NFTs powered by Secure Transactions.
+# SOLAX: Solana Unleashed -> Open your Store on Solana with Compressed NFTs powered by Secure Transactions.
 
-A Cross-Chain, Privacy-Preserving Dapp built for Merchants and Users alike empoweres merchants with Point of Sale for Merchants to Scale built on Solana.
+A No Code StoreSetup with Privacy-Preserving Inbuilt for Merchants and Users alike , SolaX empoweres Point of Sale System by turning physical products -> cNFTs for Merchants to Scale and accept payments in SPL Tokens.
 
 ![image](https://github.com/kamalbuilds/SolaX/assets/95926324/b0b9bea2-6089-417a-bfc5-1093e752f781)
+
+
+https://github.com/kamalbuilds/SolaX/assets/95926324/f066b25b-7805-41fb-856c-c75186bd5278
+
 
 ![image](https://github.com/kamalbuilds/SolaX/assets/95926324/5176c49a-903a-44a1-88f7-cc9e8aa47fa4)
 
