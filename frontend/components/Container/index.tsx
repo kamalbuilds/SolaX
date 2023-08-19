@@ -1,4 +1,4 @@
-import { TailwindSize, sizeToMaxWClassName } from "@/lib/tailwind";
+import { TailwindSize, sizeToMaxWClassName } from "../../lib/tailwind";
 import clsx from "clsx";
 import { ReactNode } from "react";
 

@@ -1,7 +1,7 @@
 import clsx from "clsx";
 
-import { Avatar } from "../../Avatar";
-import { TailwindSize, sizeToDimensionsClassName } from "@/lib/tailwind";
+import { Avatar } from "../../Avatar/index";
+import { TailwindSize, sizeToDimensionsClassName } from "../../../lib/tailwind";
 
 export type MediaProps = {
   size?: TailwindSize;

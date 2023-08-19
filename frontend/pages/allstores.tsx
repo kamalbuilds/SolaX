@@ -1,10 +1,10 @@
-import { Container } from "@/components/Container";
-import { Input } from "@/components/Input";
-import { LoadingPage } from "@/components/LoadingPage";
-import { Header } from "@/components/MediaObject/Header";
-import { Spin } from "@/components/Spin";
-import { useProjects } from "@/hooks/useProjects";
-import { useProjectsSearch } from "@/hooks/useProjectsSearch";
+import { Container } from "../components/Container/index";
+import { Input } from "../components/Input/index";
+import { LoadingPage } from "../components/LoadingPage/index";
+import { Header } from "../components/MediaObject/Header/index";
+import { Spin } from "../components/Spin/index";
+import { useProjects } from "../hooks/useProjects";
+import { useProjectsSearch } from "../hooks/useProjectsSearch";
 import Link from "next/link";
 import { useState } from "react";
 

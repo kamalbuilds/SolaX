@@ -1,4 +1,4 @@
-import { TailwindSize } from "@/lib/tailwind";
+import { TailwindSize } from "../../../lib/tailwind";
 import clsx from "clsx";
 
 type SpinProps = {

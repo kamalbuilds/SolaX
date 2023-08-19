@@ -1,8 +1,8 @@
 import clsx from "clsx";
 import Link from "next/link";
 
-import { Media, MediaProps } from "./Media";
-import { Header, HeaderProps } from "./Header";
+import { Media, MediaProps } from "./Media/index";
+import { Header, HeaderProps } from "./Header/index";
 
 export type MediaObjectProps = HeaderProps & {
   media?: MediaProps;

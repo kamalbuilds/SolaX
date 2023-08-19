@@ -1,4 +1,4 @@
-import { underdogClient } from "@/lib/underdog";
+import { underdogClient } from "../../../lib/underdog";
 import crypto from "crypto";
 import { NextApiRequest, NextApiResponse } from "next";
 
