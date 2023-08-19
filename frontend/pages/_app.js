@@ -16,6 +16,7 @@ import  SolPriceProvider  from "../context/SolPriceProvider.tsx";
 import  theme from "../components/theme";
 import { ColorModeScript } from "@chakra-ui/color-mode";
 import ToggleColorMode from "../components/ToggleColorMode";
+import Providers from "../components/Providers";
 
 function MyApp({ Component, pageProps }) {
   const [queryClient] = useState(() => new QueryClient());
@@ -35,6 +36,7 @@ function MyApp({ Component, pageProps }) {
             <WalletConnectionProvider>
               <MetaplexProvider>
                 <AuctionHouseProvider>
+                  <Providers>
                   <SolPriceProvider>
                     <>
                       <div className="flex min-h-screen ">
@@ -46,6 +48,7 @@ function MyApp({ Component, pageProps }) {
                       </div>
                     </>
                   </SolPriceProvider>
+                  </Providers>
                 </AuctionHouseProvider>
               </MetaplexProvider>
             </WalletConnectionProvider>

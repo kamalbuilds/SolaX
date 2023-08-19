@@ -1,4 +1,4 @@
-import { Button, ButtonProps } from "../../Button/index";
+import { Button, ButtonProps } from "../../Button2/index";
 import { TailwindSize } from "../../../lib/tailwind";
 import clsx from "clsx";
 import React from "react";

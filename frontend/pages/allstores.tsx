@@ -1,5 +1,5 @@
 import { Container } from "../components/Container/index";
-import { Input } from "../components/Input/index";
+import { Input } from "../components/Input2/index";
 import { LoadingPage } from "../components/LoadingPage/index";
 import { Header } from "../components/MediaObject/Header/index";
 import { Spin } from "../components/Spin/index";
@@ -8,7 +8,7 @@ import { useProjectsSearch } from "../hooks/useProjectsSearch";
 import Link from "next/link";
 import { useState } from "react";
 
-export const IndexView: React.FC = () => {
+const Allstores = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const { data, isLoading } = useProjectsSearch({
@@ -24,7 +24,7 @@ export const IndexView: React.FC = () => {
   return (
     <Container size="2xl" className="pt-8 space-y-8">
       <Header
-        title={process.env.NEXT_PUBLIC_APP_NAME || "My Gallery"}
+        title={process.env.NEXT_PUBLIC_APP_NAME}
         size="5xl"
       />
 
@@ -57,3 +57,5 @@ export const IndexView: React.FC = () => {
     </Container>
   );
 };
+
+export default Allstores;
