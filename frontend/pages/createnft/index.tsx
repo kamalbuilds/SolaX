@@ -8,7 +8,6 @@ import { useRouter } from "next/router";
 import { useMetaplex } from '../../context/Metaplex';
 import { useState } from "react";
 import { useWallet } from '@solana/wallet-adapter-react';
-
 import React, { ChangeEvent, useCallback} from 'react'
 import {
   Box,
@@ -28,6 +27,7 @@ const LoginValidation = z.object({
   category: z.string().min(1).max(255),
   picture_url: z.string().url({ message: "Upload Picture or try again" }),
   description: z.string().min(1).max(255),
+  currency: z.string().min(1).max(255),
 });
 
 
@@ -38,32 +38,109 @@ const MarketplacePage = () => {
   const [tokenAmount, setTokenAmount] = useState<number>(0);
   const toast = useToast();
   const [productProperties, setProductProperties] = useState(null);
-
+  const [productID, setProductID] = useState(null);
+  const [productPrice, setProductPrice] = useState(null);
   const wallet = useWallet();
 
+  const createProduct = async () =>{
+    const options = {
+      method: 'POST',
+      headers: {
+        accept: 'application/json',
+        'content-type': 'application/json',
+        authorization: 'Bearer secret_d9e600ad67794673b4cfc2a57d0f76b0',
+      },
+      body: JSON.stringify({
+        meta: {category: productProperties?.category},
+        name: productProperties?.name,
+        description: productProperties?.description,
+        images: [productProperties?.image],
+        maxSupply: tokenAmount
+      })
+    };
+    
+    fetch('https://api.spherepay.co/v1/product', options)
+      .then(response => response.json())
+      .then(response => setProductID(response.data.project.id))
+      .catch(err => console.error(err));
+  }
 
-  const options = {
-    method: 'POST',
-    headers: {
-      accept: 'application/json',
-      'content-type': 'application/json',
-      authorization: 'Bearer fdgf'
-    },
-    body: JSON.stringify({
-      attributes: {paymentslink: 'New Value'},
-      upsert: false,
-      name: productProperties?.name,
-      symbol: 'symbol',
-      description: productProperties?.description,
-      image: productProperties?.image,
-      receiverAddress: wallet.publicKey,
-    })
-  };
-  
-  fetch('https://dev.underdogprotocol.com/v2/projects/1/nfts', options)
+  const setprice = async()=>{
+    console.log(process.env.NEXT_PUBLIC_SPHEREPAY_API_KEY,productProperties.currency)
+    const options = {
+      method: 'POST',
+      headers: {
+        accept: 'application/json',
+        'content-type': 'application/json',
+        authorization: `Bearer ${process.env.NEXT_PUBLIC_SPHEREPAY_API_KEY}`,
+      },
+      // `${productID}`
+      body: JSON.stringify({currency: `${productProperties?.currency}`, product: 'product_8176bf36b3d34457bf99e2e5f01a1aae' , unitAmountDecimal: `${productProperties?.currency}` , type: 'oneTime'})
+    };
+    
+    fetch('https://api.spherepay.co/v1/price', options)
+      .then(response => response.json())
+      .then(response => console.log(response))
+      .catch(err => console.error(err));
+
+  }
+
+
+  const createpaymentlink = async ()=>{
+    const options = {
+      method: 'POST',
+      headers: {
+        accept: 'application/json',
+        'content-type': 'application/json',
+        authorization: `Bearer ${process.env.NEXT_PUBLIC_SPHEREPAY_API_KEY}`
+      },
+      body: JSON.stringify({
+        successUrl: 'https://solax.vercel.app/dashboard', // this shall remain constant
+        lineItems: [
+          {
+              "price": "price_f1aadb5393cd4744a768eb58ed7eae54",
+              "quantity": "1",
+              "quantityMutable":true
+          }
+        ],
+        name: 'bangle',
+        description: 'bangle payment'
+      })
+    };
+
+  fetch('https://api.spherepay.co/v1/paymentLink', options)
     .then(response => response.json())
     .then(response => console.log(response))
     .catch(err => console.error(err));
+
+  }
+
+  const handleCreateSFT = async (values: any) => {
+    
+    // await createProduct();
+    await setprice();
+    // await createpaymentlink();
+
+    // 
+    const options = {
+      method: 'POST',
+      headers: {
+        accept: 'application/json',
+        'content-type': 'application/json',
+        authorization: `Bearer ${process.env.NEXT_PUBLIC_UNDERSCORE_API_KEY}`,
+      },
+      body: JSON.stringify({
+        attributes: {paymentslink: 'New Value'},
+        upsert: false,
+        name: productProperties?.name,
+        symbol: 'symbol',
+        description: productProperties?.description,
+        image: productProperties?.image,
+        receiverAddress: wallet.publicKey,
+      })
+    };
+
+  }
 
   const createroom = async () => {
     const url = 'https://api.huddle01.com/api/v1/create-iframe-room';
@@ -97,6 +174,12 @@ const MarketplacePage = () => {
     }
   };
   
+    
+    // fetch('https://dev.underdogprotocol.com/v2/projects/1/nfts', options)
+    //   .then(response => response.json())
+    //   .then(response => console.log(response))
+    //   .catch(err => console.error(err));
+
   const handleTokenAmountChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       setTokenAmount(Number(event.target.value))
@@ -128,6 +211,7 @@ const MarketplacePage = () => {
                 category: "",
                 picture_url: "",
                 description: "",
+                currency: "",
               }}
               onSubmit={async (values) => {
                 console.log(values, "values");
@@ -141,11 +225,14 @@ const MarketplacePage = () => {
                   image: values.picture_url,
                   description: values.description,
                   roomId: roomId,
+                  projectid: values.projectid,
+                  currency: values.currency,
                   // Add more properties as needed for your NFT metadata
                 };
                 setProductProperties(productProperties);
                 console.log(productProperties, "productProperties");
 
+                await handleCreateSFT(values);
                 // Call the function to upload metadata to Arweave and get the URI
                 // const { uri , metadata} = await metaplex.nfts().uploadMetadata(productProperties);
 
@@ -163,11 +250,25 @@ const MarketplacePage = () => {
                 label="Product Name"
                 placeholder="Product Name"
               />
+
+              <LabeledTextField
+                name="projectid"
+                label="Store ID"
+                placeholder="1"
+                type="number"
+              />
+
               <LabeledTextField
                 name="price"
                 label="Price"
                 placeholder="Price"
                 type="number"
+              />
+
+              <LabeledTextField
+                name="currency"
+                label="Currency"
+                placeholder="Write the Currency"
               />
 
               <LabeledTextField

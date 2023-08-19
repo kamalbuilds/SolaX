@@ -24,7 +24,7 @@ const Home: NextPage = () => {
       headers: {
         accept: 'application/json',
         'content-type': 'application/json',
-        authorization: 'Bearer 929f875d381729.81d73cc860d74f90b043cb8e2810b387',
+        authorization: `Bearer ${process.env.NEXT_PUBLIC_UNDERDOG_API_KEY}`,
       },
       body: JSON.stringify({
         attributes: { paymentnewKey: 'New Value' },
