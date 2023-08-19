@@ -16,6 +16,8 @@ import  SolPriceProvider  from "../context/SolPriceProvider.tsx";
 import  theme from "../components/theme";
 import { ColorModeScript } from "@chakra-ui/color-mode";
 import ToggleColorMode from "../components/ToggleColorMode";
+import { SphereProvider } from "@spherelabs/react";
+import { useSphere } from "@spherelabs/react";
 
 function MyApp({ Component, pageProps }) {
   const [queryClient] = useState(() => new QueryClient());
@@ -36,6 +38,7 @@ function MyApp({ Component, pageProps }) {
               <MetaplexProvider>
                 <AuctionHouseProvider>
                   <SolPriceProvider>
+                    <SphereProvider>
                     <>
                       <div className="flex min-h-screen ">
                         <Sidebar />
@@ -45,6 +48,7 @@ function MyApp({ Component, pageProps }) {
                         </main>
                       </div>
                     </>
+                    </SphereProvider>
                   </SolPriceProvider>
                 </AuctionHouseProvider>
               </MetaplexProvider>

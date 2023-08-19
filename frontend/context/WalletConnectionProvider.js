@@ -4,7 +4,7 @@ import { BackpackWalletAdapter, GlowWalletAdapter, PhantomWalletAdapter } from '
 import { useMemo } from 'react'
 
 const WalletConnectionProvider = ({ children }) => {
-    const endpoint = useMemo(() => 'https://solana-mainnet.g.alchemy.com/v2/SW3uzyu7hPsAhI5878T7jffYghoOuDLk', []);
+    const endpoint = useMemo(() => 'https://solana-devnet.g.alchemy.com/v2/7rwYXko3FDfNXH1zD-Y3o2Gd1LTlzTfU', []);
     // alchetmy api
 
     const wallets = useMemo(() => [new PhantomWalletAdapter(), new GlowWalletAdapter(), new BackpackWalletAdapter()], [])

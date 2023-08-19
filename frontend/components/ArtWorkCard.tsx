@@ -27,6 +27,7 @@ const ArtworkCard: React.FC<Props> = ({
   let priceInSol = formatPrice(listing);
   let priceInUsd = priceInSol.split(' ')[1] * solPrice;
 
+
   console.log(priceInSol,priceInUsd,priceInSol.split(' ')[1],"priceInSol,priceInUsd")
   return (
     <Box

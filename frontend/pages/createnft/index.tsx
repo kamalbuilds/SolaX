@@ -20,9 +20,6 @@ import {
   useToast,
   VStack,
 } from '@chakra-ui/react';
-import { token, toMetaplexFileFromBrowser } from '@metaplex-foundation/js'
-import { useAuctionHouse } from '../../context/AuctionHouse';
-
 
 const LoginValidation = z.object({
   product_name: z.string().min(1).max(255),
@@ -38,9 +35,35 @@ const MarketplacePage = () => {
   const router = useRouter();
   const [image, setImage] = useState<File>()
   const [metadataURI, setMetadataURI] = useState(null);
-  const { auctionHouse } = useAuctionHouse();
   const [tokenAmount, setTokenAmount] = useState<number>(0);
   const toast = useToast();
+  const [productProperties, setProductProperties] = useState(null);
+
+  const wallet = useWallet();
+
+
+  const options = {
+    method: 'POST',
+    headers: {
+      accept: 'application/json',
+      'content-type': 'application/json',
+      authorization: 'Bearer fdgf'
+    },
+    body: JSON.stringify({
+      attributes: {paymentslink: 'New Value'},
+      upsert: false,
+      name: productProperties?.name,
+      symbol: 'symbol',
+      description: productProperties?.description,
+      image: productProperties?.image,
+      receiverAddress: wallet.publicKey,
+    })
+  };
+  
+  fetch('https://dev.underdogprotocol.com/v2/projects/1/nfts', options)
+    .then(response => response.json())
+    .then(response => console.log(response))
+    .catch(err => console.error(err));
 
   const createroom = async () => {
     const url = 'https://api.huddle01.com/api/v1/create-iframe-room';
@@ -74,53 +97,6 @@ const MarketplacePage = () => {
     }
   };
   
-  const { metaplex } = useMetaplex();
-  const wallet = useWallet();
-
-  const handleCreateSFT = useCallback(async (values, uri) => {
-    if (  !metaplex || !image || !wallet || !wallet.publicKey) {
-      return
-    }
-
-    console.log(metadataURI,"metadataURI")
-    let title = ''
-    let description = ''
-    if (tokenAmount && tokenAmount > 1) {
-      await metaplex.nfts().createSft({
-        uri,
-        name: values.product_name,
-        sellerFeeBasisPoints: 200,
-        tokenOwner: wallet.publicKey,
-        tokenAmount: token(tokenAmount),
-      })
-
-      toast({
-        title: 'SFT created 🎉',
-        description: "We've created your SFT. 🚀",
-        status: 'success',
-        duration: 9000,
-        isClosable: true,
-      })
-    } else {
-      await metaplex.nfts().create({
-        uri,
-        name: values.product_name,
-        sellerFeeBasisPoints: 200,
-        tokenOwner: wallet.publicKey,
-      })
-
-      toast({
-        title: 'NFT created 🎉',
-        description: "We've created your NFT. 🚀",
-        status: 'success',
-        duration: 9000,
-        isClosable: true,
-      })
-    }
-
-    router.push('/dashboard')
-  }, [wallet, router, metaplex, auctionHouse, toast, image, tokenAmount , metadataURI])
-
   const handleTokenAmountChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       setTokenAmount(Number(event.target.value))
@@ -167,35 +143,19 @@ const MarketplacePage = () => {
                   roomId: roomId,
                   // Add more properties as needed for your NFT metadata
                 };
-
+                setProductProperties(productProperties);
                 console.log(productProperties, "productProperties");
 
                 // Call the function to upload metadata to Arweave and get the URI
-                const { uri , metadata} = await metaplex.nfts().uploadMetadata(productProperties);
+                // const { uri , metadata} = await metaplex.nfts().uploadMetadata(productProperties);
 
-                console.log(uri, "uri",metadata,"metadata");
+                // console.log(uri, "uri",metadata,"metadata");
                 // Store the metadataURI in state (you can also send it to Supabase)
-                setMetadataURI(uri);
+                // setMetadataURI(uri);
 
                 // Call the function to mint the NFT with the product properties
-                await handleCreateSFT(values,uri);
+                // await handleCreateSFT(values,uri);
 
-                try {
-                  const { error } = await supabase
-                    .from("marketplace")
-                    .insert({price : values.price, product_name : values.product_name, category : values.category, picture_url : values.picture_url , room_id: roomId});
-
-                  if (!error) {
-                    router.push("/dashboard");
-                  }
-                } catch (error) {
-                  console.log(error,"some error occured");
-                  return {
-                    [FORM_ERROR]:
-                      errorMessage[error?.message] ??
-                      errorMessage[errorCode.SERVER_INTERNAL_ERROR],
-                  };
-                }
               }}
             >
               <LabeledTextField
