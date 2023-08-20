@@ -6,6 +6,7 @@ import Link from 'next/link'
 import React, { ChangeEvent, useCallback, useState } from 'react'
 import { PublicKey } from '@solana/web3.js'
 import styles from '../styles/Home.module.css'
+import TokenModal from '../components/swapTokens/TokenModal'
 
 const Home: NextPage = () => {
   const [name, setName] = useState('');
@@ -53,6 +54,14 @@ const Home: NextPage = () => {
 
   return (
     <Box flexGrow={1} position="relative">
+
+      <div>
+        <TokenModal />
+      </div>
+
+
+
+
       <Flex align="center" justify="center" height="100vh">
         <form onSubmit={handleSubmit} className="max-w-md mx-auto p-4">
           <Input
