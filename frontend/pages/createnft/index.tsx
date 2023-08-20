@@ -204,6 +204,7 @@ const MarketplacePage = () => {
             quantityMutable: false
           }
         ],
+        meta: '{ "owner": wallet.publicKey }',
         wallets: [{
           id: walletId,
           shareBps: 10000,
