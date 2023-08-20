@@ -22,6 +22,8 @@ export function PublicKeyLink({
 }: PublicKeyLinkProps) {
   const publicKeyLinkClassName = clsx("flex space-x-2 items-center", className);
 
+  console.log(publicKey);
+
   if (!publicKey) return null;
 
   return (
