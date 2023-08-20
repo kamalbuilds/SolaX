@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { NextUnderdog, NetworkEnum } from "@underdog-protocol/js";
 import { NextApiHandler } from "next";
 
