@@ -33,24 +33,28 @@ export function PublicKeyLink({
           onClick={() => viewAccountOnExplorer(publicKey.toString(), network)}
           className="flex-shrink-0"
         >
-          <img
-            src="/solana.png"
-            className="h-5 w-5"
-            alt="solana"
-          />
+          <div className="flex gap-3 items-center">
+            <img
+              src="https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/So11111111111111111111111111111111111111112/logo.png"
+              className="h-[25px] w-[25px] rounded-full"
+              alt="solana"
+            />
+            <p className="text-gray-600 text-[18px]	">{shortenAddress(publicKey.toString())}</p>
+          </div>
         </button>
       )}
       {showXray && (
         <button onClick={() => openOnXray(publicKey)} className="flex-shrink-0">
           <img
-            src="/xray.jpeg"
+            src="https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/So11111111111111111111111111111111111111112/logo.png"
             className={sizeToDimensionsClassName["xs"]}
             alt="solana"
           />
+          <p className="text-gray-600 ">{shortenAddress(publicKey.toString())}</p>
         </button>
       )}
 
-      <p className="text-light">{shortenAddress(publicKey.toString())}</p>
+      {/* <p className="text-light">{shortenAddress(publicKey.toString())}</p> */}
     </div>
   );
 }

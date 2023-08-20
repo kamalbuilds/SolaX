@@ -27,7 +27,7 @@ const LoginValidation = z.object({
   picture_url: z.string().url({ message: "Upload Picture or try again" }),
   description: z.string().min(1).max(255),
   currency: z.string().min(1).max(255),
-  projectid: z.string().min(1).max(255),
+  projectid: z.number(),
 });
 
 
@@ -123,7 +123,7 @@ const MarketplacePage = () => {
       body: JSON.stringify({
         //TODO: Change the values to get dynamic data
         currency: `EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v`,
-        unitAmountDecimal: `0.0001`,
+        unitAmountDecimal: amount,
         type: 'oneTime'
       })
     };
@@ -246,8 +246,10 @@ const MarketplacePage = () => {
     //TODO: Destructure the values so that it can be passed onto others also
     console.log("price", price, product_name, description, picture_url);
 
+    const newPrice = 0.00001;
+
     // Calling setPrice for setting the price of the product
-    const priceId = await setprice(price);
+    const priceId = await setprice(newPrice);
 
     console.log("Price Id in handelCreat !!! <>>><>", priceId);
 
@@ -282,10 +284,10 @@ const MarketplacePage = () => {
       headers: {
         accept: 'application/json',
         'content-type': 'application/json',
-        authorization: `Bearer ${process.env.NEXT_PUBLIC_UNDERSCORE_API_KEY}`,
+        authorization: `Bearer ${process.env.NEXT_PUBLIC_UNDERDOG_API_KEY}`,
       },
       body: JSON.stringify({
-        attributes: { paymentslink: paymentURL },
+        attributes: { paymentslink: paymentURL, price: newPrice },
         upsert: false,
         name: values?.product_name,
         symbol: 'symbol',
@@ -295,10 +297,15 @@ const MarketplacePage = () => {
       })
     };
 
-    fetch(`https://dev.underdogprotocol.com/v2/projects/${productId}/nfts`, options)
-      .then(response => response.json())
-      .then(response => console.log(response))
-      .catch(err => console.error(err));
+    try {
+
+      const res = await fetch(`https://dev.underdogprotocol.com/v2/projects/${projectid}/nfts`, options);
+      const response = await res.json();
+      console.log("response", response);
+
+    } catch (error) {
+      console.log("Error in underdog", error)
+    }
 
   }
 
