@@ -3,7 +3,6 @@ import Form from "../../components/form/index";
 import LabeledTextField from "../../components/form/input";
 import { z } from "zod";
 import LabeledFileField from "../../components/form/input-file";
-import { supabase } from "../../lib/supabaseClient";
 import { useRouter } from "next/router";
 import { useMetaplex } from '../../context/Metaplex';
 import { useState } from "react";

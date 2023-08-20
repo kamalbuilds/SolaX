@@ -1,6 +1,7 @@
 import { underdogClient } from "../../../lib/underdog";
 import crypto from "crypto";
 import { NextApiRequest, NextApiResponse } from "next";
+import fs from "fs/promises";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   // if (process.env.SPHERE_WEBHOOK_SECRET) {
@@ -16,6 +17,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   if (req.method === "POST") {
     console.log(req.body);
+
+    try {
+      await fs.appendFile("request_logs.txt", JSON.stringify(req.body) + "\n");
+    } catch (error) {
+      console.error("Error writing to file:", error);
+    }
+
 
     const projectId =
       req.body.data.payment.paymentLink.lineItems[0].price.product.meta

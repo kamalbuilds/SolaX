@@ -12,7 +12,7 @@ export default async function handler(
   res: NextApiResponse<ResponseData>
 ) {
   const connection = new Connection(
-    "https://api.mainnet-beta.solana.com/"
+    "https://api.devnet.solana.com/"
   );
 
   const tokenTypes: Token[] = ["SAMO", "USDC", "USDT", "LAMPORTS", "BONK", "mSOL"];
@@ -21,7 +21,7 @@ export default async function handler(
   
   for (const tokenType of tokenTypes) {
     const estimateLastTxs = await Elusiv.estimateTxsCountLastTime(
-      "mainnet-beta",
+      "devnet",
       connection,
       3600,
       tokenType

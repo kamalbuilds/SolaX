@@ -23,7 +23,7 @@ export default async function handler(
   }
 
   const connection = new Connection(
-    "https://api.mainnet-beta.solana.com/"
+    "https://api.devnet.solana.com/"
   );
 
   try {

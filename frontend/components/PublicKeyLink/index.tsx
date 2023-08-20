@@ -1,9 +1,9 @@
 import { NetworkEnum } from "@underdog-protocol/js";
 
 import clsx from "clsx";
-import { sizeToDimensionsClassName } from "../../../lib/tailwind";
+import { sizeToDimensionsClassName } from "../../lib/tailwind";
 import { PublicKeyInitData } from "@solana/web3.js";
-import { openOnXray, shortenAddress, viewAccountOnExplorer } from "@/lib";
+import { openOnXray, shortenAddress, viewAccountOnExplorer } from "../../lib/index";
 
 type PublicKeyLinkProps = {
   publicKey: PublicKeyInitData;

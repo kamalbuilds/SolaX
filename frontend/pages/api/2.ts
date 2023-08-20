@@ -17,7 +17,7 @@ export default async function handler(
   res: NextApiResponse<ResponseData>
 ) {
   const connection = new Connection(
-    "https://api.mainnet-beta.solana.com/"
+    "https://api.devnet.solana.com/"
   );
 
   const tokens: Token[] = ["SAMO", "USDC", "USDT", "LAMPORTS", "BONK", "mSOL"];
