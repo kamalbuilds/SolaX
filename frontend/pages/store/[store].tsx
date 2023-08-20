@@ -1,10 +1,10 @@
-import { Button } from "../components/Button2/index";
-import { Card } from "../components/Card2/index";
-import { Container } from "../components/Container/index";
-import { LoadingPage } from "../components/LoadingPage/index";
-import { Header } from "../components/MediaObject/Header/index";
-import { PublicKeyLink } from "../components/PublicKeyLink/index";
-import { useProject } from "../hooks/useProject";
+import { Button } from "../../components/Button2/index";
+import { Card } from "../../components/Card2/index";
+import { Container } from "../../components/Container/index";
+import { LoadingPage } from "../../components/LoadingPage/index";
+import { Header } from "../../components/MediaObject/Header/index";
+import { PublicKeyLink } from "../../components/PublicKeyLink/index";
+import { useProject } from "../../hooks/useProject";
 import { NetworkEnum } from "@underdog-protocol/types";
 import Link from "next/link";
 import { useRouter } from "next/router";

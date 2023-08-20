@@ -45,7 +45,7 @@ const Allstores = () => {
           {data?.results.map((project) => (
             <Link
               key={project.id}
-              href={`/${project.id}`}
+              href={`/store/${project.id}`}
               className="relative pb-[100%] rounded-md overflow-hidden hover:opacity-50"
             >
               <div

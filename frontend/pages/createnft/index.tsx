@@ -27,6 +27,7 @@ const LoginValidation = z.object({
   picture_url: z.string().url({ message: "Upload Picture or try again" }),
   description: z.string().min(1).max(255),
   currency: z.string().min(1).max(255),
+  projectid: z.string().min(1).max(255),
 });
 
 
@@ -294,7 +295,7 @@ const MarketplacePage = () => {
       })
     };
 
-    fetch('https://dev.underdogprotocol.com/v2/projects/1/nfts', options)
+    fetch(`https://dev.underdogprotocol.com/v2/projects/${productId}/nfts`, options)
       .then(response => response.json())
       .then(response => console.log(response))
       .catch(err => console.error(err));
@@ -333,12 +334,6 @@ const MarketplacePage = () => {
     }
   };
 
-
-  // fetch('https://dev.underdogprotocol.com/v2/projects/1/nfts', options)
-  //   .then(response => response.json())
-  //   .then(response => console.log(response))
-  //   .catch(err => console.error(err));
-
   const handleTokenAmountChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       setTokenAmount(Number(event.target.value))
@@ -371,6 +366,7 @@ const MarketplacePage = () => {
                 picture_url: "",
                 description: "",
                 currency: "",
+                projectid: ""
               }}
               onSubmit={async (values) => {
                 console.log(values, "values");
