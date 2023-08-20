@@ -7,7 +7,7 @@ const handler: NextApiHandler = async (req, res) => {
 
   const nextUnderdog = NextUnderdog({
     apiKey: process.env.NEXT_PUBLIC_UNDERSCORE_API_KEY!,
-    network: 'DEVNET',
+    network: "DEVNET" as NetworkEnum,
   });
 
   await nextUnderdog(req, res);
