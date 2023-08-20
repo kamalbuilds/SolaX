@@ -247,7 +247,7 @@ const MarketplacePage = () => {
     //TODO: Destructure the values so that it can be passed onto others also
     console.log("price", price, product_name, description, picture_url);
 
-    const newPrice = 0.000001;
+    const newPrice = 0.00001;
 
     // Calling setPrice for setting the price of the product
     const priceId = await setprice(newPrice);
