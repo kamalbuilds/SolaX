@@ -77,7 +77,7 @@ const NewTransactionModal = ({ modalOpen, setModalOpen, addTransaction }) => {
             onClick={onPay}
             className="w-full rounded-lg bg-[#00d54f] py-3 px-12 text-white hover:bg-opacity-70"
           >
-            Pay
+            Payer
           </button>
 
           <button
