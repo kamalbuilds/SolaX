@@ -185,7 +185,7 @@ const MarketplacePage = () => {
      * 2. walletId
      */
 
-    console.log('PriceId', priceId ,walletId);
+    console.log('PriceId', priceId, walletId);
 
 
     const options = {
@@ -247,10 +247,8 @@ const MarketplacePage = () => {
     //TODO: Destructure the values so that it can be passed onto others also
     console.log("price", price, product_name, description, picture_url);
 
-    const newPrice = 0.00001;
-
     // Calling setPrice for setting the price of the product
-    const priceId = await setprice(newPrice);
+    const priceId = await setprice(price);
 
     console.log("Price Id in handelCreat !!! <>>><>", priceId);
 
@@ -287,7 +285,7 @@ const MarketplacePage = () => {
         authorization: `Bearer ${process.env.NEXT_PUBLIC_UNDERDOG_API_KEY}`,
       },
       body: JSON.stringify({
-        attributes: { paymentslink: paymentURL, price: newPrice , seller: wallet.publicKey},
+        attributes: { paymentslink: paymentURL, price: price, seller: wallet.publicKey },
         upsert: false,
         name: values?.product_name,
         symbol: 'symbol',
