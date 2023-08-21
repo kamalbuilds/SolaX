@@ -19,7 +19,6 @@ import Image from 'next/image';
 import { useWallet } from '@solana/wallet-adapter-react';
 
 
-
 const SwapTokens = ({ tokenList }: any) => {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
