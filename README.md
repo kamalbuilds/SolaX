@@ -1,6 +1,6 @@
 # SOLAX: Relax when you have SOLAX
 
-A Cross-Chain, Privacy-Preserving Payments Dapp Powered by Point of Sale for Merchants to Scale built on Solana.
+A Cross-Chain, Privacy-Preserving Dapp built for Merchants and Users alike empoweres merchants with Point of Sale for Merchants to Scale built on Solana.
 
 ![image](https://github.com/kamalbuilds/SolaX/assets/95926324/b0b9bea2-6089-417a-bfc5-1093e752f781)
 
