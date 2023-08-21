@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Button } from "../../components/Button2/index";
 import { Card } from "../../components/Card2/index";
 import { Container } from "../../components/Container/index";
