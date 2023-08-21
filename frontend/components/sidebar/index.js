@@ -6,6 +6,7 @@ import NavMenu from "../header/NavMenu";
 import Profile from "../header/Profile";
 import NewTransactionModal from "../transaction/NewTransactionModal";
 import TransactionQRModal from "../transaction/TransactionQRModal";
+import TokenModal from "../swapTokens/TokenModal";
 
 const Sidebar = () => {
   const { connected, publicKey } = useWallet();
@@ -44,6 +45,8 @@ const Sidebar = () => {
           setModalOpen={setNewTransactionModalOpen}
           addTransaction={doTransaction}
         />
+
+        <TokenModal />
       </header>
     </div>
   );
