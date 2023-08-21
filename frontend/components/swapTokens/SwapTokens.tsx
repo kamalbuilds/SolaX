@@ -12,10 +12,6 @@ import { MdSwapVerticalCircle } from "react-icons/md";
 //Jupiter Imports
 import { Connection, Keypair, VersionedTransaction } from '@solana/web3.js';
 import fetch from 'cross-fetch';
-import { Wallet } from '@project-serum/anchor';
-import bs58 from 'bs58';
-import * as anchor from '@project-serum/anchor';
-import Image from 'next/image';
 import { useWallet } from '@solana/wallet-adapter-react';
 
 
