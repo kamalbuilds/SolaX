@@ -2,7 +2,9 @@
 
 A Cross-Chain, Privacy-Preserving Payments Dapp Powered by Point of Sale for Merchants to Scale built on Solana.
 
-![image](https://github.com/kamalbuilds/SolaX/assets/95926324/43d89106-96be-437f-92e7-134af33b3c17)
+![image](https://github.com/kamalbuilds/SolaX/assets/95926324/b0b9bea2-6089-417a-bfc5-1093e752f781)
+
+![image](https://github.com/kamalbuilds/SolaX/assets/95926324/5176c49a-903a-44a1-88f7-cc9e8aa47fa4)
 
 Solax is an intuitive Peer-to-Peer (P2P) marketplace that simplifies the experience of buying and selling items using different cryptocurrencies. With a focus on privacy and cross-chain compatibility, Solax is powered by the Elusiv protocol for ensuring transactional privacy and the Wormhole protocol for facilitating cross-chain transactions.
 
