@@ -116,15 +116,13 @@ const ProjectView = () => {
                                                     </div>
 
                                                     <div className="flex gap-2 mt-4">
-                                                        <div >Mint Address: </div>
-                                                        <div>
+                                                        <div>Mint Address: </div>
+                                                        <Link href={`https://translator.shyft.to/address/${nft.mintAddress}?cluster=devnet&compressed=true`}>
                                                             {
-                                                                nft.mintAddress.substring(0, 10) + '....'
+                                                            nft.mintAddress.substring(0, 10) + '....'
                                                             }
-                                                        </div>
+                                                        </Link>
                                                     </div>
-
-
 
                                                     <div className="flex my-4 items-center">
                                                         <div className="mr-1">Status: </div>
@@ -160,9 +158,6 @@ const ProjectView = () => {
                                                             </Button>
                                                         </Card>
                                                     )}
-
-
-
 
                                                 </div>
                                             </div>

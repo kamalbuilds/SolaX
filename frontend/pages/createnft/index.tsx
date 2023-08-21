@@ -185,7 +185,7 @@ const MarketplacePage = () => {
      * 2. walletId
      */
 
-    console.log('PriceId', priceId, walletId);
+    console.log('PriceId', priceId ,walletId);
 
 
     const options = {
@@ -276,7 +276,6 @@ const MarketplacePage = () => {
 
     console.log("Payment Id generated: ", paymentId);
 
-
     const paymentURL = `https://spherepay.co/pay/${paymentId}`;
     console.log("<<<<<URL Payment>>>>>>>", paymentURL);
 
@@ -288,7 +287,7 @@ const MarketplacePage = () => {
         authorization: `Bearer ${process.env.NEXT_PUBLIC_UNDERDOG_API_KEY}`,
       },
       body: JSON.stringify({
-        attributes: { paymentslink: paymentURL, price: newPrice },
+        attributes: { paymentslink: paymentURL, price: newPrice , seller: wallet.publicKey},
         upsert: false,
         name: values?.product_name,
         symbol: 'symbol',

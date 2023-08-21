@@ -55,6 +55,7 @@ const Home: NextPage = () => {
     <Box flexGrow={1} position="relative">
       <Flex align="center" justify="center" height="100vh">
         <form onSubmit={handleSubmit} className="max-w-md mx-auto p-4">
+          <h1 className='text-2xl'>Set up your Store</h1>
           <Input
             type="text"
             placeholder="Store Name"
