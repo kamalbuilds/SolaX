@@ -1,6 +1,6 @@
-# SOLAX: Relax when you have SOLAX
+# SOLAX: Solana Unleashed a product only Possible on Solana
 
-A Cross-Chain, Privacy-Preserving Dapp built for Merchants and Users alike empoweres merchants with Point of Sale for Merchants to Scale built on Solana.
+A No Code StoreSetup with Privacy-Preserving Inbuilt for Merchants and Users alike , SolaX empoweres Point of Sale System by turning physical products -> cNFTs for Merchants to Scale and accept payments in SPL Tokens.
 
 ![image](https://github.com/kamalbuilds/SolaX/assets/95926324/b0b9bea2-6089-417a-bfc5-1093e752f781)
 
@@ -57,6 +57,7 @@ The Transfer request follows  this mechanism
 1. Install the dependencies:
 
 ```bash
+cd frontend
 npm install
 ```
 
@@ -84,11 +85,5 @@ For selling items, list your product by clicking on 'Sell', fill in the product 
 ## 🙏 Contribute
 
 We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to contribute.
-
-## 📝 License
-
-Solax is [MIT licensed](LICENSE).
-
----
 
 Solax: Making the benefits of decentralized and privacy-preserving transactions accessible to everyone.
