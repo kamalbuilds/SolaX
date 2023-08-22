@@ -4,6 +4,10 @@ A No Code StoreSetup with Privacy-Preserving Inbuilt for Merchants and Users ali
 
 ![image](https://github.com/kamalbuilds/SolaX/assets/95926324/b0b9bea2-6089-417a-bfc5-1093e752f781)
 
+
+https://github.com/kamalbuilds/SolaX/assets/95926324/f066b25b-7805-41fb-856c-c75186bd5278
+
+
 ![image](https://github.com/kamalbuilds/SolaX/assets/95926324/5176c49a-903a-44a1-88f7-cc9e8aa47fa4)
 
 Solax is an intuitive Peer-to-Peer (P2P) marketplace that simplifies the experience of buying and selling items using different cryptocurrencies. With a focus on privacy and cross-chain compatibility, Solax is powered by the Elusiv protocol for ensuring transactional privacy and the Wormhole protocol for facilitating cross-chain transactions.
