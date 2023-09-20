@@ -4,9 +4,7 @@ A No Code StoreSetup with Privacy-Preserving Inbuilt for Merchants and Users ali
 
 ![image](https://github.com/kamalbuilds/SolaX/assets/95926324/b0b9bea2-6089-417a-bfc5-1093e752f781)
 
-
 https://github.com/kamalbuilds/SolaX/assets/95926324/f066b25b-7805-41fb-856c-c75186bd5278
-
 
 ![image](https://github.com/kamalbuilds/SolaX/assets/95926324/5176c49a-903a-44a1-88f7-cc9e8aa47fa4)
 
@@ -20,60 +18,45 @@ https://mumbai.polygonscan.com/tx/0xf3a4c47a7fd37d25350d9cb3e2efc5fc1a38476b2b36
 
 ## 🌟 Features
 
-**No-Code Storefront Setup**: As a merchant, set up your own digital storefront easily using Shyft and Underdog protocol.
+Solax pioneers a novel Peer-to-Peer (P2P) marketplace experience with Compressed NFTs, redefining the art of buying and selling by employing diverse cryptocurrencies. Our core focus rests on privacy enhancement and cross-chain compatibility, utilizing the groundbreaking Elusiv protocol to ensure confidential transactions and the Wormhole protocol to facilitate frictionless cross-chain transactions.
 
-**Products as CNFTs**: As a merchant Get your store setup and tokenize your products in the form of Compressed NFTs. In the background a product is created using Sphere and the cnft gets created and the payment link is attatched to the cnft as a attribute.
+🌐 Cross-Chain, Privacy-Preserving Marketplace
 
-**Most efficient Swaps with Jupiter for Payments**: Swaps any tokens to any token with Jupiter for doing payments to the products. Jupiter provides you with the most efficient deals.
+Embark on a journey that transcends traditional marketplace boundaries. Solax provides an intuitive P2P platform, enabling seamless trade across various cryptocurrencies. Utilize the Elusiv protocol's privacy shield to safeguard personal data and transaction intricacies, thus elevating the confidentiality of your trading journey.
 
-We have also created a NPM package for Other Dapps to easily Integrate Jupiter Swaps 
+🛍️ Empowering Merchants with Compressed NFTs
 
-https://www.npmjs.com/package/jupiter-swap-widget repo -> https://github.com/kamalbuilds/Jupiter-swap-widget
+Are you a merchant eager to redefine your storefront? Solax introduces a revolutionary store setup process with Shyft and Underdog protocols. Elevate your products to an elevated realm as Compressed NFTs - a fusion of technology and artistry. With Sphere's prowess, product creation is streamlined, culminating in Compressed NFTs featuring integrated payment links - the epitome of efficiency.
 
-**One-Click Purchases with Sphere**: Buy items with a single click, using different cryptocurrencies from different blockchains seamlessly and without the need to understand complex transaction processes with Sphere.
+💡 Innovative Payment Solutions with Jupiter
 
-**Privacy Protection with Elusiv Protocol**: Make purchases with confidence knowing that your personal information and transaction details are kept private, thanks to Elusiv protocol.
+Experience the epitome of convenience with Solax's partnership with Jupiter. Seamlessly swap any tokens to any token, ensuring smooth and efficient payments. Leverage Jupiter to unlock a universe of unparalleled deals, optimizing your trading experience.
 
-**Token Bridging powered by Wormhole**: No need to switch between different wallets across multiple chains to make transactions on different blockchains. Connect your existing wallets and let our platform handle cross-chain transactions via the Wormhole protocol.
+💫 Effortless Transactions with Sphere
 
-**Simplified Crypto Exchange**: Swap your cryptocurrencies into SOL tokens or other preferred cryptocurrencies easily with our integrated coin-exchange system.
+Bid farewell to complexity and embrace one-click purchases using Sphere. Seamlessly transact across diverse cryptocurrencies and blockchains without delving into intricate transaction processes. The future of hassle-free buying is here.
 
-**Solanapay powered QR Code Payments**
+🛡️ Shielded Transactions with Elusiv Protocol
 
-QR based easy payments for our other Payment entities. 
+Rest assured as you indulge in payments and zero-knowledge messaging.
 
-![image](https://user-images.githubusercontent.com/95926324/215766384-940c1677-fcc7-4962-892e-a50e3419a86f.png)
+Solax leverages the Elusiv protocol to enhance transactional privacy, shielding personal details and transaction data from prying eyes. Your shopping journey remains truly private and confidential.
 
-## 🔧 Setup
+🔗 Seamless Cross-Chain Transactions via Wormhole
 
-1. Install the dependencies:
+Say goodbye to wallet-switching woes. Solax integrates interoperable wallets, streamlining cross-chain transactions using the Wormhole protocol. Seamlessly conduct transactions across various blockchains, leveraging the protocol's prowess to your advantage.
 
-```bash
-cd frontend
+💱 Integrated Crypto Exchange
 
-npm install
-```
+Navigate the world of cryptocurrencies effortlessly with our integrated coin-exchange system. Swap your holdings for SOL tokens or your preferred cryptocurrencies, all within a unified platform.
 
-2. Start the application:
+📱 SolanaPay Powered QR Code Payments
 
-```bash
-npm run dev
-```
+Immerse yourself in Solanapay's QR code payments, offering a seamless and secure transaction process. From the customer's initiation to the merchant's validation, Solanapay streamlines transactions while maintaining airtight security.
 
-This will start the application on your local machine. 
+✨ Experience the Future of Commerce on Solana
 
-## 🤝 Connect Wallets
-
-Solax supports multiple wallets. To connect your wallet, go to the 'Wallet' tab and follow the instructions for your preferred solana wallet.
-
-## 👥 How to Trade
-
-1. Browse the listings on the marketplace or search for a specific item.
-2. Click 'Buy' to purchase an item. You can choose to pay with any supported cryptocurrency.
-3. Confirm your transaction in your connected wallet.
-4. Done! The item is yours.
-
-For selling items, list your product by clicking on 'Sell', fill in the product details, set your price, and you're all set!
+Welcome to a world where commerce transcends the ordinary. SOLAX brings you the future, a fusion of advanced technologies - Jupiter, Sphere, Elusiv, Shyft, and Shyft Sphere - all under the banner of Solana. Whether you're a merchant seeking streamlined store management or a user in pursuit of secure transactions, SOLAX paves the way for a new era of cross-chain commerce, available exclusively on the Solana blockchain. Join us as we revolutionize the way we buy and sell, elevating every transaction to an experience of unparalleled excellence.
 
 ---
 
